@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jerome-dental-local-agent"
+version = "0.1.0"
+description = "Jerome's Dental Front-Office Agent - On-Premises Local Agent"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "UNLICENSED"}
+dependencies = [
+    "playwright>=1.41.0",
+    "httpx>=0.26.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "pyodbc>=5.0.0",
+    "cryptography>=41.0.0",
+    "schedule>=1.2.0",
+    "structlog>=24.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.1.0",
+    "black>=24.1.0",
+    "mypy>=1.8.0",
+    "pyinstaller>=6.3.0",
+]
+windows = [
+    "pywin32>=306",
+]
+
+[project.scripts]
+jerome-agent = "src.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+select = ["E", "F", "I", "N", "W", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

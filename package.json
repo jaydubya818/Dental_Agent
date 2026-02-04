@@ -1,0 +1,41 @@
+{
+  "name": "jerome-dental",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Jerome's Dental Front-Office Agent - AI-driven Morning Huddle platform",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/web",
+    "dev:api": "cd apps/api && python -m uvicorn app.main:app --reload --port 8000",
+    "dev:agent": "cd apps/local-agent && python -m src.main",
+    "build": "npm run build --workspace=apps/web",
+    "build:api": "cd apps/api && pip install -e .",
+    "build:agent": "cd apps/local-agent && pyinstaller --onefile src/main.py",
+    "lint": "npm run lint --workspace=apps/web",
+    "lint:api": "cd apps/api && ruff check . && black --check .",
+    "lint:agent": "cd apps/local-agent && ruff check . && black --check .",
+    "format": "npm run format --workspace=apps/web",
+    "format:api": "cd apps/api && black .",
+    "format:agent": "cd apps/local-agent && black .",
+    "test": "npm run test --workspaces --if-present",
+    "test:api": "cd apps/api && pytest",
+    "test:agent": "cd apps/local-agent && pytest",
+    "clean": "rm -rf node_modules apps/*/node_modules apps/*/.next apps/*/dist"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "keywords": [
+    "dental",
+    "healthcare",
+    "ai",
+    "langgraph",
+    "hipaa"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}
