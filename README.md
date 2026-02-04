@@ -199,29 +199,6 @@ npm run dev:api
 npm run dev:agent
 ```
 
-### Environment Variables
-
-Create `.env` files in each app directory:
-
-**apps/api/.env**
-```env
-DEBUG=false
-SECRET_KEY=your-secret-key-here
-DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/jerome_dental
-AZURE_OPENAI_API_KEY=your-azure-key
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_DEPLOYMENT=gpt-4
-```
-
-**apps/local-agent/.env**
-```env
-PMS_TYPE=csv  # or dentrix, eaglesoft
-CSV_PATH=./data/schedule.csv
-CLOUD_API_URL=http://localhost:8000/api/v1/schedule/ingest
-CLOUD_API_KEY=your-api-key
-PRACTICE_SALT=unique-salt-per-practice
-```
-
 ---
 
 ## LangGraph Agent Workflow
