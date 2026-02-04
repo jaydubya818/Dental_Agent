@@ -487,4 +487,4 @@ className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-
 
 - **Tech stack versions**: See [TECH_STACK.md](./TECH_STACK.md)
 - **User flows**: See [APP_FLOW.md](./APP_FLOW.md)
-- **Feature requirements**: See [PRD.md](../../docs/context/JEROME_DENTAL_PRD.md)
+- **Feature requirements**: See [PRD.md](./PRD.md)

@@ -312,4 +312,4 @@
 - **Authentication logic**: See [BACKEND_STRUCTURE.md](./BACKEND_STRUCTURE.md#authentication)
 - **API endpoints**: See [BACKEND_STRUCTURE.md](./BACKEND_STRUCTURE.md#api-endpoints)
 - **Component styling**: See [FRONTEND_GUIDELINES.md](./FRONTEND_GUIDELINES.md)
-- **Feature requirements**: See [PRD.md](../../docs/context/JEROME_DENTAL_PRD.md)
+- **Feature requirements**: See [PRD.md](./PRD.md)

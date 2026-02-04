@@ -778,4 +778,4 @@ async def ingest_schedule(practice_id: str, date: str, data: dict):
 
 - **Tech stack versions**: See [TECH_STACK.md](./TECH_STACK.md)
 - **User flows**: See [APP_FLOW.md](./APP_FLOW.md)
-- **Feature requirements**: See [PRD.md](../../docs/context/JEROME_DENTAL_PRD.md)
+- **Feature requirements**: See [PRD.md](./PRD.md)

@@ -351,7 +351,7 @@ This ensures the next session can pick up where you left off.
 
 | Document | Purpose |
 |----------|---------|
-| [docs/PRD.md](./docs/context/JEROME_DENTAL_PRD.md) | Feature requirements |
+| [docs/PRD.md](./docs/PRD.md) | Feature requirements |
 | [docs/APP_FLOW.md](./docs/APP_FLOW.md) | User navigation |
 | [docs/TECH_STACK.md](./docs/TECH_STACK.md) | Locked versions |
 | [docs/FRONTEND_GUIDELINES.md](./docs/FRONTEND_GUIDELINES.md) | Design system |

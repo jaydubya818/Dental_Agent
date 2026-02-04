@@ -85,12 +85,16 @@ jerome-dental/
 ├── .gitignore                   # Git ignore rules
 │
 ├── docs/                        # 📚 Canonical Documentation
-│   ├── PRD.md                   # Product requirements reference
+│   ├── PRD.md                   # Product requirements (full spec)
 │   ├── APP_FLOW.md              # Screen inventory & user flows
 │   ├── TECH_STACK.md            # Locked dependency versions
 │   ├── FRONTEND_GUIDELINES.md   # Design system (colors, typography, spacing)
 │   ├── BACKEND_STRUCTURE.md     # Database schema & API contracts
-│   └── IMPLEMENTATION_PLAN.md   # Step-by-step build sequence
+│   ├── IMPLEMENTATION_PLAN.md   # Step-by-step build sequence
+│   └── context/                 # Original source context files
+│       ├── 1_product_vision.md
+│       ├── 2_technical_architecture.md
+│       └── 3_agent_workflow.md
 │
 ├── apps/
 │   ├── web/                     # 🖥️  Next.js 16 Dashboard

@@ -141,7 +141,7 @@ Reference: [TECH_STACK.md](./TECH_STACK.md#backend---local-agent)
 
 ### 4.1 LangGraph Setup
 
-Reference: [3_agent_workflow.md](../../docs/context/3_agent_workflow.md)
+Reference: [3_agent_workflow.md](./context/3_agent_workflow.md)
 
 - [ ] **4.1.1** Configure LangGraph in `app/agents/__init__.py`
 - [ ] **4.1.2** Set up Azure OpenAI client with HIPAA-compliant settings
@@ -305,4 +305,4 @@ Update [progress.txt](../progress.txt) after completing each numbered step.
 - **Database schema**: See [BACKEND_STRUCTURE.md](./BACKEND_STRUCTURE.md)
 - **UI design**: See [FRONTEND_GUIDELINES.md](./FRONTEND_GUIDELINES.md)
 - **User flows**: See [APP_FLOW.md](./APP_FLOW.md)
-- **Feature requirements**: See [PRD.md](../../docs/context/JEROME_DENTAL_PRD.md)
+- **Feature requirements**: See [PRD.md](./PRD.md)
