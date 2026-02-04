@@ -160,6 +160,34 @@ Base unit: `4px`
 <div className="max-w-3xl mx-auto">
 ```
 
+### Mobile Navigation Patterns
+
+| Element | Mobile (`< md`) | Tablet+ (`≥ md`) |
+|---------|-----------------|------------------|
+| Top Nav | Hamburger menu | Full horizontal nav |
+| Sidebar | Hidden (slide-in drawer) | Fixed 250px left |
+| Grid columns | 1 column | 2 → 3 → 4 columns |
+| Chat panel | Full-screen drawer | Side panel |
+
+```jsx
+// Hamburger menu (mobile only)
+<button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+  <Menu className="h-6 w-6" />
+</button>
+
+// Mobile slide-in drawer
+<Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+  <SheetContent side="left" className="w-64">
+    {/* Navigation items */}
+  </SheetContent>
+</Sheet>
+
+// Sidebar (hidden on mobile)
+<aside className="hidden md:block w-64 fixed left-0 top-16 bottom-0">
+  {/* Sidebar content */}
+</aside>
+```
+
 ---
 
 ## 5. Component Patterns
@@ -480,6 +508,46 @@ className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-
 
 <nav aria-label="Primary navigation">
 ```
+
+---
+
+## 13. State Management
+
+### When to Use Each Approach
+
+| Approach | Use Case | Example |
+|----------|----------|---------|
+| `useState` | Local component state | Form inputs, toggles, modals |
+| `useReducer` | Complex local state with multiple actions | Multi-step forms, complex UI state |
+| React Context | Shared state across component tree | Auth state, theme, user preferences |
+| SWR / React Query | Server state and data fetching | API data, caching, revalidation |
+
+### Patterns
+
+```tsx
+// Local state (component-scoped)
+const [isOpen, setIsOpen] = useState(false);
+const [formData, setFormData] = useState({ name: '', email: '' });
+
+// Server state (use SWR for API data)
+import useSWR from 'swr';
+const { data: huddle, error, isLoading } = useSWR('/api/v1/huddle/today');
+
+// Auth context (shared across app)
+import { useAuth } from '@/contexts/AuthContext';
+const { user, isAuthenticated, logout } = useAuth();
+
+// Theme context
+import { useTheme } from '@/contexts/ThemeContext';
+const { theme, setTheme } = useTheme();
+```
+
+### Rules
+
+1. **Prefer local state** - Only lift state when truly needed by siblings
+2. **Server state ≠ client state** - Use SWR for API data, not useState
+3. **Avoid prop drilling** - Use Context for data needed 3+ levels deep
+4. **Keep Context focused** - One context per concern (auth, theme, toast)
 
 ---
 
