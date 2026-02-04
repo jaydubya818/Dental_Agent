@@ -78,9 +78,19 @@ Jerome's Dental Front-Office Agent is an AI-powered platform that automates the 
 
 ```
 jerome-dental/
+├── CLAUDE.md                    # 🤖 AI operating manual (read first every session)
+├── progress.txt                 # 📝 Session state tracker
 ├── package.json                 # npm workspaces configuration
 ├── README.md                    # This file
 ├── .gitignore                   # Git ignore rules
+│
+├── docs/                        # 📚 Canonical Documentation
+│   ├── PRD.md                   # Product requirements reference
+│   ├── APP_FLOW.md              # Screen inventory & user flows
+│   ├── TECH_STACK.md            # Locked dependency versions
+│   ├── FRONTEND_GUIDELINES.md   # Design system (colors, typography, spacing)
+│   ├── BACKEND_STRUCTURE.md     # Database schema & API contracts
+│   └── IMPLEMENTATION_PLAN.md   # Step-by-step build sequence
 │
 ├── apps/
 │   ├── web/                     # 🖥️  Next.js 16 Dashboard
@@ -129,6 +139,25 @@ jerome-dental/
         │   └── huddle.py        # MorningHuddle, RevenueOpportunity
         └── pyproject.toml
 ```
+
+---
+
+## Documentation
+
+This project follows the **Vibe Coding System** with canonical documentation files that AI reads before coding:
+
+| Document | Purpose |
+|----------|---------|
+| [`CLAUDE.md`](./CLAUDE.md) | AI operating manual - rules, patterns, HIPAA constraints |
+| [`progress.txt`](./progress.txt) | Session state - what's done, in progress, next |
+| [`docs/PRD.md`](./docs/PRD.md) | Product requirements reference |
+| [`docs/APP_FLOW.md`](./docs/APP_FLOW.md) | Screen inventory, navigation paths, user flows |
+| [`docs/TECH_STACK.md`](./docs/TECH_STACK.md) | Locked dependency versions (exact versions) |
+| [`docs/FRONTEND_GUIDELINES.md`](./docs/FRONTEND_GUIDELINES.md) | Design system - colors, typography, components |
+| [`docs/BACKEND_STRUCTURE.md`](./docs/BACKEND_STRUCTURE.md) | Database schema, API contracts, edge cases |
+| [`docs/IMPLEMENTATION_PLAN.md`](./docs/IMPLEMENTATION_PLAN.md) | Step-by-step build sequence (7 phases) |
+
+> **For AI Agents**: Read `CLAUDE.md` and `progress.txt` at the start of every session.
 
 ---
 
