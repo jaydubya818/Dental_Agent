@@ -18,12 +18,46 @@
 
 Jerome's Dental Front-Office Agent is an AI-powered platform that automates the daily "Morning Huddle" for dental practices. It acts as an intelligence layer on top of legacy Practice Management Systems (PMS) like Dentrix and Eaglesoft, using a hybrid on-premises/cloud architecture to ensure HIPAA compliance while delivering powerful AI-driven insights.
 
+### The Problem
+
+Dental practices struggle with daily front-office coordination, especially during morning "huddles." Critical patient and operational context exists, but it's:
+
+- **Spread across legacy dental software** – information siloed in different screens and systems
+- **Locked in on-prem / closed systems** – no APIs, no exports, no easy access
+- **Manually reviewed (if at all)** – staff spend 30-60 minutes gathering info each morning
+
+This creates **missed risks, inefficiencies, and staff burnout**.
+
+### The Solution
+
+An agentic LLM system that acts as a **front-office intelligence layer** for dental practices. The system automatically:
+
+1. **Ingests daily schedules** from any PMS (no vendor cooperation required)
+2. **Extracts patient-specific context** and flags what matters
+3. **Highlights operational risks** before they become problems
+4. **Delivers concise, role-specific summaries** with zero manual effort
+
+**Think: "Morning huddle, fully automated."**
+
 ### Core Value Proposition
 
-- **Automated Morning Huddle**: Generates concise daily briefs tailored for each team role
-- **Zero-Integration Data Capture**: On-premises agent extracts data via screen-scraping, ODBC, or CSV without requiring PMS API cooperation
-- **Proactive Risk Flagging**: Identifies medical risks (allergies, blood thinners), financial risks (unpaid balances), and scheduling gaps
-- **Revenue Optimization**: Surfaces unscheduled treatment opportunities with talking points
+| Feature | Description |
+|---------|-------------|
+| 🗓️ **Automated Morning Huddle** | Generates concise daily briefs tailored for each team role (Dentist, Hygienist, Front Desk, Manager) |
+| 🔌 **Zero-Integration Data Capture** | On-premises agent extracts data via screen-scraping, ODBC, or CSV without requiring PMS API cooperation |
+| ⚠️ **Proactive Risk Flagging** | Identifies medical risks (allergies, blood thinners), financial risks (unpaid balances), and scheduling gaps |
+| 💰 **Revenue Optimization** | Surfaces unscheduled treatment opportunities with talking points for same-day case acceptance |
+| 💬 **Chat-Based Assistant** | Natural language Q&A about today's schedule, patients, and tasks |
+| 📋 **Intelligent Task Routing** | AI-prioritized task lists that adapt throughout the day |
+
+### Why This Matters
+
+| Benefit | Impact |
+|---------|--------|
+| **Time Saved** | 30-60 min/day on morning prep |
+| **Revenue Captured** | 1-2 extra cases/month from surfaced opportunities |
+| **Risks Prevented** | Allergies, balance issues, no-shows caught before they cause problems |
+| **Team Alignment** | Everyone starts the day on the same page |
 
 ---
 
