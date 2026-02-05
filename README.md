@@ -154,12 +154,15 @@ This project follows the **Vibe Coding System** with canonical documentation fil
 |----------|---------|
 | [`CLAUDE.md`](./CLAUDE.md) | AI operating manual - rules, patterns, HIPAA constraints |
 | [`progress.txt`](./progress.txt) | Session state - what's done, in progress, next |
+| [`.env.example`](./.env.example) | Environment variables reference for all apps |
 | [`docs/PRD.md`](./docs/PRD.md) | Product requirements reference |
-| [`docs/APP_FLOW.md`](./docs/APP_FLOW.md) | Screen inventory, navigation paths, user flows |
+| [`docs/APP_FLOW.md`](./docs/APP_FLOW.md) | Screen inventory, navigation paths, user flows, error handling |
 | [`docs/TECH_STACK.md`](./docs/TECH_STACK.md) | Locked dependency versions (exact versions) |
-| [`docs/FRONTEND_GUIDELINES.md`](./docs/FRONTEND_GUIDELINES.md) | Design system - colors, typography, components |
-| [`docs/BACKEND_STRUCTURE.md`](./docs/BACKEND_STRUCTURE.md) | Database schema, API contracts, edge cases |
+| [`docs/FRONTEND_GUIDELINES.md`](./docs/FRONTEND_GUIDELINES.md) | Design system - colors, typography, components, accessibility |
+| [`docs/BACKEND_STRUCTURE.md`](./docs/BACKEND_STRUCTURE.md) | Database schema, API contracts, error formats, risk rules |
 | [`docs/IMPLEMENTATION_PLAN.md`](./docs/IMPLEMENTATION_PLAN.md) | Step-by-step build sequence (7 phases) |
+| [`docs/DEPLOYMENT_CHECKLIST.md`](./docs/DEPLOYMENT_CHECKLIST.md) | Pre-flight verification, HIPAA compliance, rollback |
+| [`docs/TESTING_STRATEGY.md`](./docs/TESTING_STRATEGY.md) | Unit, integration, E2E testing guidelines |
 
 > **For AI Agents**: Read `CLAUDE.md` and `progress.txt` at the start of every session.
 
