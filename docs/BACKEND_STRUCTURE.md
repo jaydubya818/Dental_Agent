@@ -774,8 +774,350 @@ async def ingest_schedule(practice_id: str, date: str, data: dict):
 
 ---
 
+## 6. Standard API Error Response Format
+
+All API errors follow a consistent structure for frontend handling.
+
+### 6.1 Error Response Schema
+
+```python
+from pydantic import BaseModel
+from typing import Optional, List
+
+class FieldError(BaseModel):
+    """Individual field validation error."""
+    field: str        # e.g., "appointments[0].time_slot"
+    message: str      # e.g., "Invalid datetime format"
+    code: str         # e.g., "invalid_format"
+
+class ErrorResponse(BaseModel):
+    """Standard error response for all API endpoints."""
+    detail: str                          # Human-readable message
+    error_code: Optional[str] = None     # Machine-readable code (e.g., "AUTH_001")
+    errors: Optional[List[FieldError]] = None  # For validation errors
+    request_id: str                      # UUID for debugging/support
+
+# Example error codes:
+# AUTH_001: Invalid credentials
+# AUTH_002: Token expired
+# AUTH_003: Token revoked
+# AUTH_004: MFA required
+# AUTH_005: MFA verification failed
+# AUTH_006: Account locked
+# VAL_001: Validation error
+# VAL_002: Missing required field
+# RES_001: Resource not found
+# RES_002: Resource already exists
+# PERM_001: Permission denied
+# PERM_002: Role not authorized
+# RATE_001: Rate limit exceeded
+# SRV_001: Internal server error
+# SRV_002: Service unavailable
+# SRV_003: LLM service error
+```
+
+### 6.2 HTTP Status Code Mapping
+
+| Status | Error Code Prefix | Description |
+|--------|-------------------|-------------|
+| 400 | `VAL_*` | Validation errors |
+| 401 | `AUTH_*` | Authentication errors |
+| 403 | `PERM_*` | Permission/authorization errors |
+| 404 | `RES_001` | Resource not found |
+| 409 | `RES_002` | Conflict (duplicate resource) |
+| 429 | `RATE_*` | Rate limiting |
+| 500 | `SRV_*` | Server errors |
+| 503 | `SRV_002` | Service unavailable |
+
+### 6.3 Example Error Responses
+
+```json
+// 400 - Validation Error
+{
+  "detail": "Validation error in request body",
+  "error_code": "VAL_001",
+  "errors": [
+    {
+      "field": "appointments[0].time_slot",
+      "message": "Invalid datetime format. Expected ISO 8601.",
+      "code": "invalid_format"
+    },
+    {
+      "field": "appointments[2].procedure_code",
+      "message": "Unknown procedure code: X9999",
+      "code": "invalid_value"
+    }
+  ],
+  "request_id": "req_abc123def456"
+}
+
+// 401 - Authentication Error
+{
+  "detail": "Invalid email or password",
+  "error_code": "AUTH_001",
+  "request_id": "req_abc123def456"
+}
+
+// 403 - Permission Denied
+{
+  "detail": "You do not have permission to access audit logs",
+  "error_code": "PERM_002",
+  "request_id": "req_abc123def456"
+}
+
+// 500 - Server Error
+{
+  "detail": "An unexpected error occurred. Please try again.",
+  "error_code": "SRV_001",
+  "request_id": "req_abc123def456"
+}
+```
+
+### 6.4 Error Response Implementation
+
+```python
+from fastapi import HTTPException, Request
+from fastapi.responses import JSONResponse
+import uuid
+
+class APIError(HTTPException):
+    def __init__(
+        self,
+        status_code: int,
+        detail: str,
+        error_code: str = None,
+        errors: List[FieldError] = None
+    ):
+        super().__init__(status_code=status_code, detail=detail)
+        self.error_code = error_code
+        self.errors = errors
+
+@app.exception_handler(APIError)
+async def api_error_handler(request: Request, exc: APIError):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "detail": exc.detail,
+            "error_code": exc.error_code,
+            "errors": [e.dict() for e in exc.errors] if exc.errors else None,
+            "request_id": str(uuid.uuid4())
+        }
+    )
+```
+
+---
+
+## 7. Practice Settings & Risk Rules Configuration
+
+Practice-specific settings are stored in the `practices.settings` JSONB column.
+
+### 7.1 Settings Schema
+
+```python
+from pydantic import BaseModel
+from typing import Dict, List, Optional
+
+class RiskRuleThresholds(BaseModel):
+    """Configurable thresholds for built-in rules."""
+    # Financial
+    balance_threshold: float = 500.0  # FIN-001: Outstanding balance alert
+    
+    # Scheduling
+    no_show_count: int = 2            # SCH-001: No-show risk threshold
+    no_show_period_months: int = 12   # SCH-001: Lookback period
+    
+    # Medical (age-based)
+    senior_age_threshold: int = 60    # MED-001: Age for blood thinner checks
+
+class CustomRiskRule(BaseModel):
+    """Practice-defined custom risk rule."""
+    id: str                           # e.g., "CUSTOM-001"
+    name: str                         # e.g., "VIP Patient Alert"
+    condition: str                    # Simple condition string
+    severity: str                     # "CRITICAL" | "WARN" | "INFO"
+    category: str                     # "MEDICAL" | "FINANCIAL" | "SCHEDULING" | "CUSTOM"
+    action: str                       # Description of action to take
+    enabled: bool = True
+
+class RiskRulesConfig(BaseModel):
+    """Complete risk rules configuration."""
+    enabled_rules: List[str] = [      # IDs of enabled built-in rules
+        "MED-001", "MED-002", "FIN-001", "SCH-001"
+    ]
+    thresholds: RiskRuleThresholds = RiskRuleThresholds()
+    custom_rules: List[CustomRiskRule] = []
+
+class NotificationSettings(BaseModel):
+    """Practice notification preferences."""
+    huddle_ready_email: bool = True
+    critical_flag_push: bool = True
+    daily_summary_email: bool = False
+
+class PracticeSettings(BaseModel):
+    """Complete practice settings schema."""
+    timezone: str = "America/New_York"
+    huddle_generation_time: str = "06:00"  # 24-hour format
+    risk_rules: RiskRulesConfig = RiskRulesConfig()
+    notifications: NotificationSettings = NotificationSettings()
+    
+    # UI Preferences
+    default_schedule_view: str = "day"  # "day" | "week"
+    show_revenue_opportunities: bool = True
+    
+    # Data Retention (override defaults)
+    schedule_retention_years: int = 3
+    huddle_retention_years: int = 1
+```
+
+### 7.2 Built-in Risk Rules Reference
+
+| Rule ID | Name | Default Condition | Severity | Category |
+|---------|------|-------------------|----------|----------|
+| MED-001 | Blood Thinner Alert | `age >= 60 AND procedure IN ('extraction', 'surgery', 'implant')` | CRITICAL | MEDICAL |
+| MED-002 | Allergy Alert | `allergies IS NOT EMPTY` | CRITICAL | MEDICAL |
+| MED-003 | Antibiotic Premedication | `premedication_required = true` | WARN | MEDICAL |
+| MED-004 | Anxiety Flag | `anxiety_level >= 3` (scale 1-5) | INFO | MEDICAL |
+| FIN-001 | Outstanding Balance | `balance >= threshold` | WARN | FINANCIAL |
+| FIN-002 | Payment Plan Due | `payment_plan_overdue = true` | WARN | FINANCIAL |
+| FIN-003 | Insurance Expired | `insurance_expiry < today` | INFO | FINANCIAL |
+| SCH-001 | No-Show Risk | `no_show_count >= threshold in period` | WARN | SCHEDULING |
+| SCH-002 | Late Arrival Pattern | `late_arrival_count >= 3 in 6 months` | INFO | SCHEDULING |
+| SCH-003 | New Patient | `is_new_patient = true` | INFO | SCHEDULING |
+
+### 7.3 Custom Rule Condition Syntax
+
+Simple conditions supported for custom rules:
+
+```python
+# Field comparisons
+"balance > 1000"
+"age >= 65"
+"procedure_code = 'D2750'"
+
+# List membership
+"procedure_code IN ('D2750', 'D2751', 'D2752')"
+
+# Field existence
+"notes CONTAINS 'anxious'"
+"allergies IS NOT EMPTY"
+
+# Boolean
+"is_new_patient = true"
+"premedication_required = true"
+
+# Combinations (AND only for simplicity)
+"age >= 60 AND procedure_code IN ('D7140', 'D7210')"
+```
+
+### 7.4 Example Practice Settings JSON
+
+```json
+{
+  "timezone": "America/Los_Angeles",
+  "huddle_generation_time": "05:30",
+  "risk_rules": {
+    "enabled_rules": ["MED-001", "MED-002", "FIN-001", "SCH-001", "SCH-003"],
+    "thresholds": {
+      "balance_threshold": 300,
+      "no_show_count": 3,
+      "no_show_period_months": 6,
+      "senior_age_threshold": 55
+    },
+    "custom_rules": [
+      {
+        "id": "CUSTOM-001",
+        "name": "VIP Patient",
+        "condition": "notes CONTAINS 'VIP'",
+        "severity": "INFO",
+        "category": "CUSTOM",
+        "action": "Ensure doctor personally greets patient",
+        "enabled": true
+      },
+      {
+        "id": "CUSTOM-002",
+        "name": "Ortho Consultation",
+        "condition": "procedure_code = 'D8660'",
+        "severity": "INFO",
+        "category": "SCHEDULING",
+        "action": "Allow extra 15 minutes for consultation",
+        "enabled": true
+      }
+    ]
+  },
+  "notifications": {
+    "huddle_ready_email": true,
+    "critical_flag_push": true,
+    "daily_summary_email": true
+  },
+  "default_schedule_view": "day",
+  "show_revenue_opportunities": true
+}
+```
+
+### 7.5 Settings API Endpoints
+
+#### `GET /api/v1/settings`
+
+```yaml
+Request:
+  Authorization: Bearer <access_token>
+
+Response 200:
+  {
+    "settings": { /* PracticeSettings object */ }
+  }
+```
+
+#### `PATCH /api/v1/settings`
+
+```yaml
+Request:
+  Authorization: Bearer <access_token> (Manager role required)
+  Content-Type: application/json
+  Body:
+    {
+      "risk_rules": {
+        "thresholds": {
+          "balance_threshold": 300
+        }
+      }
+    }
+
+Response 200:
+  {
+    "settings": { /* Updated PracticeSettings object */ },
+    "message": "Settings updated successfully"
+  }
+```
+
+#### `POST /api/v1/settings/risk-rules`
+
+```yaml
+Request:
+  Authorization: Bearer <access_token> (Manager role required)
+  Content-Type: application/json
+  Body:
+    {
+      "id": "CUSTOM-003",
+      "name": "High-Value Procedure",
+      "condition": "procedure_value >= 5000",
+      "severity": "INFO",
+      "category": "FINANCIAL",
+      "action": "Verify insurance pre-authorization"
+    }
+
+Response 201:
+  {
+    "rule": { /* CustomRiskRule object */ },
+    "message": "Custom rule created successfully"
+  }
+```
+
+---
+
 ## Cross-References
 
 - **Tech stack versions**: See [TECH_STACK.md](./TECH_STACK.md)
 - **User flows**: See [APP_FLOW.md](./APP_FLOW.md)
 - **Feature requirements**: See [PRD.md](./PRD.md)
+- **Agent workflow**: See [context/3_agent_workflow.md](./context/3_agent_workflow.md)
