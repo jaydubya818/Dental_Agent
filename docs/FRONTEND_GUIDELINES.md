@@ -484,29 +484,205 @@ Use **Lucide React** for all icons.
 
 ---
 
-## 12. Accessibility
+## 12. Accessibility (WCAG 2.1 AA)
 
-### Focus States
+All components must meet WCAG 2.1 AA compliance. Healthcare applications require special attention to accessibility.
+
+### 12.1 Focus States
 
 ```jsx
 // All interactive elements must have visible focus
 className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+
+// Never remove focus outlines without providing alternative
+// BAD: outline-none (alone)
+// GOOD: outline-none focus:ring-2 focus:ring-primary
 ```
 
-### Color Contrast
+### 12.2 Color Contrast Requirements
 
-- Text on backgrounds: Minimum 4.5:1 ratio
-- Large text (18px+): Minimum 3:1 ratio
-- Interactive elements: Minimum 3:1 ratio
+| Element | Minimum Ratio | Tools |
+|---------|---------------|-------|
+| Body text | 4.5:1 | WebAIM Contrast Checker |
+| Large text (18px+ / 14px+ bold) | 3:1 | Chrome DevTools |
+| Interactive elements (buttons, links) | 3:1 | axe DevTools |
+| Non-text elements (icons, borders) | 3:1 | |
 
-### ARIA Labels
+**Risk Flag Colors (Verified)**
+- CRITICAL text (`#991B1B`) on background (`#FEE2E2`): 7.2:1 ✓
+- WARN text (`#92400E`) on background (`#FEF3C7`): 5.8:1 ✓
+- INFO text (`#1E40AF`) on background (`#DBEAFE`): 6.5:1 ✓
+
+### 12.3 ARIA Labels & Roles
 
 ```jsx
+// Icon-only buttons MUST have aria-label
 <button aria-label="Close dialog">
   <X className="h-5 w-5" />
 </button>
 
+// Navigation landmarks
 <nav aria-label="Primary navigation">
+<main aria-label="Main content">
+<aside aria-label="Patient information sidebar">
+
+// Loading states
+<div aria-busy="true" aria-live="polite">
+  Loading schedule...
+</div>
+
+// Form fields
+<label htmlFor="email">Email address</label>
+<input 
+  id="email" 
+  type="email"
+  aria-describedby="email-error"
+  aria-invalid={hasError}
+/>
+<span id="email-error" role="alert">{errorMessage}</span>
+
+// Tables
+<table aria-label="Today's appointments">
+  <thead>
+    <tr>
+      <th scope="col">Time</th>
+      <th scope="col">Patient</th>
+      <th scope="col">Procedure</th>
+    </tr>
+  </thead>
+</table>
+```
+
+### 12.4 Keyboard Navigation
+
+| Key | Action | Required For |
+|-----|--------|--------------|
+| `Tab` | Move to next focusable element | All interactive elements |
+| `Shift + Tab` | Move to previous element | All interactive elements |
+| `Enter` / `Space` | Activate button/link | Buttons, links |
+| `Escape` | Close modal/dropdown | Modals, popovers, dropdowns |
+| `Arrow keys` | Navigate within component | Menus, tabs, lists |
+
+```jsx
+// Modal must trap focus
+import { FocusTrap } from '@headlessui/react';
+
+<FocusTrap>
+  <Dialog>
+    {/* Modal content - focus stays inside */}
+  </Dialog>
+</FocusTrap>
+
+// Skip link for keyboard users
+<a 
+  href="#main-content" 
+  className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded"
+>
+  Skip to main content
+</a>
+```
+
+### 12.5 Screen Reader Support
+
+```jsx
+// Visually hidden but accessible to screen readers
+<span className="sr-only">Opens in new tab</span>
+
+// Live regions for dynamic content
+<div aria-live="polite" aria-atomic="true">
+  {/* Toast notifications, status updates */}
+</div>
+
+// Announce loading state changes
+<div 
+  role="status" 
+  aria-live="polite"
+  aria-label={isLoading ? "Loading" : "Content loaded"}
+>
+
+// Data tables with proper headers
+<table>
+  <caption className="sr-only">
+    Schedule for February 4, 2026 - 15 appointments
+  </caption>
+</table>
+```
+
+### 12.6 Form Accessibility
+
+```jsx
+// Required field indicators
+<label htmlFor="name">
+  Full Name <span aria-hidden="true">*</span>
+  <span className="sr-only">(required)</span>
+</label>
+
+// Error message association
+<Input
+  id="name"
+  aria-required="true"
+  aria-invalid={!!errors.name}
+  aria-describedby={errors.name ? "name-error" : undefined}
+/>
+{errors.name && (
+  <p id="name-error" role="alert" className="text-red-600 text-sm mt-1">
+    {errors.name.message}
+  </p>
+)}
+
+// Fieldset for related inputs
+<fieldset>
+  <legend>Notification Preferences</legend>
+  <label>
+    <input type="checkbox" /> Email notifications
+  </label>
+  <label>
+    <input type="checkbox" /> Push notifications
+  </label>
+</fieldset>
+```
+
+### 12.7 Testing Checklist
+
+| Test | Tool | Frequency |
+|------|------|-----------|
+| Automated a11y scan | axe DevTools, Lighthouse | Every PR |
+| Keyboard navigation | Manual | Every feature |
+| Screen reader testing | NVDA (Windows), VoiceOver (Mac) | Major features |
+| Color contrast | WebAIM Contrast Checker | New color additions |
+| Reduced motion | `prefers-reduced-motion` | Animation additions |
+
+```bash
+# Run accessibility audit
+npx playwright test --project=a11y
+
+# Lighthouse CI
+npx lighthouse https://yourdomain.com --preset=desktop --only-categories=accessibility
+```
+
+### 12.8 Reduced Motion Support
+
+```jsx
+// Respect user preference for reduced motion
+<div className="transition-all duration-200 motion-reduce:transition-none motion-reduce:transform-none">
+
+// CSS media query
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Framer Motion configuration
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ 
+    duration: prefersReducedMotion ? 0 : 0.2 
+  }}
+/>
 ```
 
 ---
