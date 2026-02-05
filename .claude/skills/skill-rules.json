@@ -1,0 +1,531 @@
+{
+  "version": "1.0",
+  "description": "Skill activation rules for SellerFi seller-financing-platform",
+  "skills": {
+    "backend-dev-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "api",
+          "endpoint",
+          "route",
+          "backend",
+          "server",
+          "prisma",
+          "database",
+          "migration",
+          "model",
+          "schema",
+          "nextauth",
+          "authentication",
+          "middleware"
+        ],
+        "intentPatterns": [
+          "creat(e|ing)\\s+(api|endpoint|route)",
+          "add\\s+(api|endpoint|route)",
+          "fix\\s+(api|backend|server)",
+          "updat(e|ing)\\s+prisma",
+          "databas(e|ing)\\s+(query|migration)",
+          "authenti(cate|cation)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/api/**/*.{ts,tsx}",
+          "lib/**/*.{ts,tsx}",
+          "prisma/**/*",
+          "auth.{ts,tsx,js,config.*}",
+          "middleware.{ts,tsx}"
+        ],
+        "contentPatterns": [
+          "import.*prisma",
+          "import.*@prisma/client",
+          "import.*next-auth",
+          "NextRequest",
+          "NextResponse"
+        ]
+      }
+    },
+    "frontend-dev-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "component",
+          "react",
+          "ui",
+          "frontend",
+          "shadcn",
+          "radix",
+          "tailwind",
+          "form",
+          "button",
+          "dialog",
+          "toast",
+          "client component"
+        ],
+        "intentPatterns": [
+          "creat(e|ing)\\s+(component|ui|page)",
+          "add\\s+(button|form|dialog|modal)",
+          "fix\\s+(ui|frontend|component|render)",
+          "styl(e|ing)",
+          "react\\s+(hook|state|effect)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "components/**/*.{ts,tsx}",
+          "app/**/page.{ts,tsx}",
+          "app/**/layout.{ts,tsx}",
+          "hooks/**/*.{ts,tsx}"
+        ],
+        "contentPatterns": [
+          "import.*react",
+          "import.*@radix-ui",
+          "import.*@/components/ui",
+          "use(State|Effect|Callback|Memo|Ref)",
+          "'use client'"
+        ]
+      }
+    },
+    "route-tester": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "test route",
+          "test api",
+          "test endpoint",
+          "api test",
+          "route test",
+          "test authentication",
+          "test auth"
+        ],
+        "intentPatterns": [
+          "test(ing)?\\s+(api|route|endpoint)",
+          "verify\\s+(api|route|endpoint)",
+          "check\\s+(api|route|endpoint)",
+          "debug\\s+(api|route|endpoint)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/api/**/*.{ts,tsx}",
+          "__tests__/api/**/*.{test,spec}.{ts,tsx}"
+        ]
+      }
+    },
+    "error-tracking": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "sentry",
+          "error tracking",
+          "error boundary",
+          "logging",
+          "breadcrumb",
+          "trace",
+          "monitoring"
+        ],
+        "intentPatterns": [
+          "add\\s+(sentry|error tracking|logging)",
+          "track\\s+error",
+          "monitor(ing)?",
+          "error\\s+(boundary|handling)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/error.{ts,tsx}",
+          "**/global-error.{ts,tsx}",
+          "lib/**/*error*.{ts,tsx}",
+          "sentry.*.config.{ts,js}"
+        ],
+        "contentPatterns": [
+          "import.*@sentry",
+          "Sentry\\.",
+          "captureException",
+          "ErrorBoundary"
+        ]
+      }
+    },
+    "skill-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "create skill",
+          "add skill",
+          "update skill",
+          "skill activation",
+          "skill rules"
+        ],
+        "intentPatterns": [
+          "creat(e|ing)\\s+skill",
+          "add\\s+(new\\s+)?skill",
+          "updat(e|ing)\\s+skill",
+          "modif(y|ying)\\s+skill"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          ".claude/skills/**/*",
+          ".claude/skills/skill-rules.json"
+        ]
+      }
+    },
+    "repo-archaeologist": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "repo structure",
+          "codebase structure",
+          "project structure",
+          "where is",
+          "find file",
+          "locate",
+          "explore codebase"
+        ],
+        "intentPatterns": [
+          "where\\s+(is|are|do|does)",
+          "how\\s+(is|are)\\s+.+\\s+(organized|structured)",
+          "show\\s+me\\s+the\\s+structure",
+          "map\\s+(codebase|repo)",
+          "explore\\s+(codebase|project)"
+        ]
+      }
+    },
+    "test-engineer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "test",
+          "testing",
+          "vitest",
+          "playwright",
+          "test coverage",
+          "unit test",
+          "integration test",
+          "e2e test"
+        ],
+        "intentPatterns": [
+          "writ(e|ing)\\s+test",
+          "add\\s+test",
+          "test\\s+(coverage|strategy)",
+          "fix\\s+test",
+          "test.*fail"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/*.{test,spec}.{ts,tsx}",
+          "__tests__/**/*",
+          "tests/**/*",
+          "vitest.config.*",
+          "playwright.config.*"
+        ]
+      }
+    },
+    "security-reviewer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "critical",
+      "promptTriggers": {
+        "keywords": [
+          "security",
+          "auth",
+          "authorization",
+          "permission",
+          "injection",
+          "xss",
+          "csrf",
+          "sanitize",
+          "validate input",
+          "sql injection"
+        ],
+        "intentPatterns": [
+          "secur(e|ity|ing)",
+          "authori(ze|zation)",
+          "permission",
+          "validat(e|ing)\\s+input",
+          "sanitiz(e|ing)",
+          "prevent\\s+(injection|xss|csrf)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/api/**/*.{ts,tsx}",
+          "lib/auth/**/*",
+          "lib/security/**/*",
+          "middleware.{ts,tsx}",
+          "auth.*.{ts,tsx}"
+        ]
+      }
+    },
+    "performance-profiler": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "performance",
+          "slow",
+          "optimize",
+          "cache",
+          "n+1",
+          "bottleneck",
+          "lazy load",
+          "memoize"
+        ],
+        "intentPatterns": [
+          "optimi(ze|zing|zation)",
+          "improv(e|ing)\\s+performance",
+          "speed\\s+up",
+          "slow.*query",
+          "fix.*slow",
+          "reduc(e|ing)\\s+load"
+        ]
+      }
+    },
+    "release-engineer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "migration",
+          "deploy",
+          "release",
+          "rollout",
+          "rollback",
+          "version",
+          "changelog"
+        ],
+        "intentPatterns": [
+          "deploy(ing|ment)?",
+          "releas(e|ing)",
+          "migrat(e|ing|ion)",
+          "rollout",
+          "rollback"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "prisma/migrations/**/*",
+          "CHANGELOG.md",
+          "package.json"
+        ]
+      }
+    },
+    "nextjs-fullstack-architect": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "next.js",
+          "nextjs",
+          "app router",
+          "server component",
+          "server action",
+          "metadata",
+          "seo"
+        ],
+        "intentPatterns": [
+          "next(js|.js)\\s+(app|route|server)",
+          "app\\s+router",
+          "server\\s+(component|action)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "app/**/*.{ts,tsx}",
+          "next.config.*"
+        ]
+      }
+    },
+    "ui-ux-designer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "design",
+          "ux",
+          "ui design",
+          "user experience",
+          "wireframe",
+          "mockup",
+          "user flow",
+          "accessibility"
+        ],
+        "intentPatterns": [
+          "design\\s+(component|page|flow)",
+          "user\\s+(experience|flow|journey)",
+          "accessibilit(y|ies)"
+        ]
+      }
+    },
+    "webapp-testing": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "test webapp",
+          "browser test",
+          "e2e test",
+          "integration test",
+          "playwright"
+        ],
+        "intentPatterns": [
+          "test\\s+(webapp|browser|ui)",
+          "e2e\\s+test"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "tests/e2e/**/*",
+          "playwright.config.*"
+        ]
+      }
+    },
+    "cloud-infrastructure-architect": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "deploy",
+          "vercel",
+          "aws",
+          "docker",
+          "container",
+          "cloud",
+          "infrastructure",
+          "ci/cd"
+        ],
+        "intentPatterns": [
+          "deploy(ing|ment)?",
+          "cloud\\s+(infrastructure|deploy)",
+          "ci\\s?/\\s?cd"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "Dockerfile",
+          "docker-compose.*",
+          ".github/workflows/**/*",
+          "vercel.json"
+        ]
+      }
+    },
+    "fintech-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "payment",
+          "stripe",
+          "escrow",
+          "deal",
+          "transaction",
+          "financing",
+          "financial"
+        ],
+        "intentPatterns": [
+          "payment\\s+(processing|integration)",
+          "stripe",
+          "escrow",
+          "deal\\s+(flow|state|management)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "lib/services/**/*deal*.{ts,tsx}",
+          "lib/services/**/*escrow*.{ts,tsx}",
+          "lib/services/**/*payment*.{ts,tsx}",
+          "app/api/**/stripe/**/*"
+        ]
+      }
+    },
+    "automation-engineer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "automate",
+          "script",
+          "workflow",
+          "ci/cd",
+          "github actions"
+        ],
+        "intentPatterns": [
+          "automat(e|ing|ion)",
+          "workflow",
+          "github\\s+action"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          ".github/workflows/**/*",
+          "scripts/**/*"
+        ]
+      }
+    },
+    "mcp-builder": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "low",
+      "promptTriggers": {
+        "keywords": [
+          "mcp server",
+          "model context protocol",
+          "mcp integration"
+        ],
+        "intentPatterns": [
+          "mcp\\s+(server|integration)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          ".mcp.json",
+          "mcp/**/*"
+        ]
+      }
+    },
+    "skill-creator": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "create skill",
+          "new skill",
+          "skill template"
+        ],
+        "intentPatterns": [
+          "creat(e|ing)\\s+skill"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          ".claude/skills/**/*"
+        ]
+      }
+    }
+  }
+}

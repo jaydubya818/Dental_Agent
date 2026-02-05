@@ -1,0 +1,44 @@
+{
+  "project": {
+    "name": "SellerFi Financial Marketplace Platform",
+    "description": "108 specialized AI sub-agents + slash commands for Claude Code workflows",
+    "version": "1.1.0"
+  },
+  "agents": {
+    "directory": ".claude/agents",
+    "index_file": ".claude/agents/index.md",
+    "auto_discovery": true,
+    "categories": [
+      "orchestration",
+      "development",
+      "design",
+      "quality",
+      "security",
+      "data-ai",
+      "devops",
+      "documentation",
+      "product",
+      "marketing",
+      "operations",
+      "specialized"
+    ]
+  },
+  "commands": {
+    "enabled": true,
+    "namespace": "sellerfi",
+    "directory": ".claude/commands",
+    "config_file": ".claude/commands/config.json",
+    "auto_discovery": true,
+    "integration": {
+      "hooks": true,
+      "validators": true,
+      "permissions": true
+    }
+  },
+  "workflows": {
+    "default_orchestrator": "supervisor-orchestrator",
+    "auto_delegation": true,
+    "quality_gates": true,
+    "command_integration": true
+  }
+}

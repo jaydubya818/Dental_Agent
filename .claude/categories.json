@@ -1,0 +1,62 @@
+{
+  "orchestration": {
+    "description": "Master coordination and team management",
+    "primary_agent": "supervisor-orchestrator",
+    "agents": ["agent-organizer", "context-manager", "project-analyst", "team-configurator", "tech-lead-orchestrator"]
+  },
+  "development": {
+    "description": "Software development and architecture",
+    "primary_agent": "full-stack-developer",
+    "agents": ["backend-architect", "frontend-developer", "api-architect", "react-pro", "vue-component-architect", "python-pro", "golang-pro", "typescript-pro", "mobile-developer", "ai-engineer", "rapid-prototyper", "legacy-modernizer", "code-archaeologist", "refactor", "electorn-pro", "nextjs-pro", "graphql-architect", "shadcn-ui-builder", "vue-nuxt-expert", "vue-state-manager", "react-component-architect", "react-nextjs-expert", "mobile-app-builder", "api-developer"]
+  },
+  "design": {
+    "description": "User experience and visual design",
+    "primary_agent": "ui-designer",
+    "agents": ["ux-designer", "ux-researcher", "visual-storyteller", "brand-guardian", "whimsy-injector", "dx-optimizer"]
+  },
+  "quality": {
+    "description": "Testing, review, and quality assurance",
+    "primary_agent": "code-reviewer",
+    "agents": ["test-automator", "test-writer-fixer", "api-tester", "performance-benchmarker", "test-results-analyzer", "qa-expert", "architect-review", "best-practices", "performance-engineer", "performance-optimizer", "database-optimizer", "postgres-pro", "tdd-specialist", "test-runner"]
+  },
+  "security": {
+    "description": "Security auditing and incident response",
+    "primary_agent": "security-auditor",
+    "agents": ["incident-responder", "devops-incident-responder", "security-scanner"]
+  },
+  "data-ai": {
+    "description": "Data science and AI/ML engineering",
+    "primary_agent": "ai-engineer",
+    "agents": ["ml-engineer", "prompt-engineer", "data-scientist", "data-engineer"]
+  },
+  "devops": {
+    "description": "DevOps and infrastructure management",
+    "primary_agent": "devops-automator",
+    "agents": ["deployment-engineer", "cloud-architect", "infrastructure-maintainer", "devops-engineer", "laravel-backend-expert", "laravel-eloquent-expert", "django-backend-expert", "django-api-developer", "django-orm-expert", "rails-backend-expert", "rails-api-developer", "rails-activerecord-expert"]
+  },
+  "documentation": {
+    "description": "Documentation and communication",
+    "primary_agent": "documentation-expert",
+    "agents": ["api-documenter", "documentation-specialist", "content-creator", "doc-writer", "debugger"]
+  },
+  "product": {
+    "description": "Product management and business strategy",
+    "primary_agent": "product-manager",
+    "agents": ["ai-scrum-master", "feedback-synthesizer", "sprint-prioritizer", "trend-researcher", "experiment-tracker", "project-planner", "project-shipper", "studio-producer"]
+  },
+  "marketing": {
+    "description": "Marketing and growth strategies",
+    "primary_agent": "growth-hacker",
+    "agents": ["app-store-optimizer", "instagram-curator", "reddit-community-builder", "tiktok-strategist", "twitter-engager", "marketing-writer"]
+  },
+  "operations": {
+    "description": "Business operations and analytics",
+    "primary_agent": "analytics-reporter",
+    "agents": ["finance-tracker", "infrastructure-maintainer", "legal-compliance-checker", "support-responder"]
+  },
+  "specialized": {
+    "description": "Specialized utilities and tools",
+    "primary_agent": "workflow-optimizer",
+    "agents": ["creating-agents", "dependencies", "joker", "joker-bonus", "studio-coach", "studio-coach-bonus", "tailwind-css-expert", "tool-evaluator"]
+  }
+}

@@ -1,0 +1,173 @@
+# Baseline Project — Cursor "Do Not Violate" Ruleset (NON-NEGOTIABLE)
+
+This ruleset applies to ALL changes in this repo. If any rule conflicts with a task request, FOLLOW THIS RULESET.
+
+---
+
+## 0) Prime Directive
+- Ship production-grade code only.
+- Correctness + trust + determinism > speed.
+- Reproduce → fix → retest. No guessing.
+
+---
+
+## 1) Zero-Error Gate (Chrome)
+- Treat ALL Chrome console output as a bug:
+  - console.error = blocker
+  - uncaught runtime errors = blocker
+  - hydration mismatches = blocker
+  - warnings are blockers unless explicitly whitelisted with a comment
+- Any fix must be verified in a REAL Chrome session or Playwright headed Chromium.
+
+---
+
+## 2) Determinism & Explainability
+- Core scoring, calculations, and entitlements MUST be deterministic.
+- No "AI decides" for:
+  - deal score math
+  - pricing/fees
+  - entitlements
+  - state transitions
+  - permissions
+- AI may only:
+  - summarize
+  - draft messages
+  - explain a score that was computed deterministically
+  - suggest next steps (non-binding)
+- All AI outputs must include:
+  - inputs used
+  - confidence
+  - missing data indicators
+  - safe user-facing explanation (no hallucinated facts)
+
+---
+
+## 3) Server-Side Enforcement (No UI-Only Security)
+- All premium features MUST be enforced server-side:
+  - API returns 401/403
+  - server components must gate data access
+  - never rely on hidden buttons alone
+- Role/tier checks must exist at the API layer for every protected route.
+
+---
+
+## 4) No Risky DB Actions Without Explicit Consent
+- NEVER run destructive Prisma commands unless the user explicitly consents in chat:
+  - `prisma migrate reset`
+  - `prisma db push --force-reset --accept-data-loss`
+  - any command that drops tables or data
+- If schema drift blocks progress:
+  - diagnose first (`migrate status`, inspect migrations, compare schema)
+  - propose the minimal safe path
+  - stop and request explicit consent before any reset
+
+---
+
+## 5) App Router / React Rendering Rules
+- No browser APIs at module scope (window, document, localStorage, navigator).
+- `localStorage` only inside `useEffect` with guards.
+- No non-deterministic SSR:
+  - no `Date.now()` / `Math.random()` during render
+  - no viewport-dependent first render differences
+- Ensure `"use client"` exists for any file using hooks.
+- Server components must NOT import client components directly unless intended.
+- Use `dynamic(() => import(...), { ssr: false })` for browser-only components.
+
+---
+
+## 6) Entitlements & Pricing Are First-Class
+- All upsells must map to explicit entitlements.
+- No hidden coupling between UI and Stripe product IDs.
+- `lib/entitlements.ts` (or equivalent) must be the single source of truth.
+- Every gated API route must check entitlements explicitly.
+
+---
+
+## 7) Testing Requirements
+- Any change touching critical flows MUST include tests:
+  - buyer signup → browse → dealroom
+  - seller signup → create listing
+  - buyer+seller deal progression (if implemented)
+- Playwright must run in Chromium; prefer headed for debugging.
+- Add a console guard in Playwright:
+  - fail on console.error and pageerror
+  - whitelist only with explicit justification comment
+- After each fix:
+  - re-run smallest relevant test
+  - at the end run:
+    - `npm run lint`
+    - `npm run type-check` (or `npm run typecheck`)
+    - `npm run build`
+    - `npm run test:e2e`
+
+---
+
+## 8) Logging, Errors, and UX
+- No raw stack traces shown to users.
+- Error messages must be actionable and non-technical.
+- Loading states required (no blank panels).
+- Disable buttons while saving/submitting.
+- Forms must validate with clear inline errors.
+
+---
+
+## 9) Security & Admin Constraints
+- Enforce server-side role checks for all admin routes and APIs.
+- Non-admin users must be blocked from `/admin/*` and `/super-admin/*`.
+- Never log secrets (tokens, Stripe signatures, passwords) to console or server logs.
+
+---
+
+## 10) Change Discipline
+- Minimal blast radius changes. Prefer small, focused commits.
+- Remove dead code and unused imports when encountered.
+- No "temporary hacks" left behind.
+- If you must whitelist a warning/error in tests, document:
+  - why it's safe
+  - where it comes from
+  - how it will be removed later
+
+---
+
+## Required Deliverable (Every Significant Task)
+At the end of work, output:
+- What you tested (exact commands + flows)
+- What you fixed (bullets + files changed)
+- Remaining known issues (if any)
+- Evidence: test pass results and confirmation of zero console errors
+
+---
+
+## 11) Beta-Freeze Toggle
+- During beta, the following changes require **explicit user approval** before implementation:
+  - Schema changes (`prisma/schema.prisma`)
+  - Pricing changes (Stripe products, prices, entitlements)
+  - Auth changes (`lib/auth.ts`, NextAuth config)
+  - Permission/role changes
+- If a task requires any of the above, STOP and ask for explicit approval first.
+- This rule is active until the user explicitly disables beta-freeze mode.
+
+---
+
+## 12) AI-Agent Safety
+- AI agents may:
+  - Evaluate deals and generate scores
+  - Recommend actions
+  - Draft messages, summaries, and documents
+- AI agents may **NEVER**:
+  - Auto-send messages without user confirmation
+  - Auto-negotiate terms without user confirmation
+  - Auto-sign or auto-accept anything on behalf of the user
+  - Execute financial transactions automatically
+- Every AI-generated action that affects another party requires explicit user confirmation via UI.
+
+---
+
+## 13) Payments Are Sacred
+- Once a Stripe product, price, or entitlement is live in production:
+  - It cannot be renamed
+  - It cannot be deleted
+  - It cannot have its ID changed
+- New versions must be created alongside existing ones.
+- Sunset old products only after confirming zero active subscriptions.
+- `lib/entitlements.ts` and Stripe Dashboard must always be in sync.

@@ -1,0 +1,341 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Project Infrastructure and Monorepo Setup",
+        "description": "Set up the foundational project structure with npm workspaces monorepo containing web, api, and local-agent apps",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [],
+        "details": "Create monorepo with npm workspaces. Initialize apps/web with Next.js 16, apps/api with FastAPI, apps/local-agent with Python. Create packages/shared for Pydantic models. Configure Tailwind CSS, ESLint, TypeScript for web. Configure ruff/black for Python apps.",
+        "testStrategy": "Verify all apps start without errors. Run linters on all packages.",
+        "subtasks": [
+          {"id": 1, "title": "Create monorepo root with package.json and npm workspaces", "status": "done"},
+          {"id": 2, "title": "Initialize apps/web with Next.js 16 (App Router)", "status": "done"},
+          {"id": 3, "title": "Initialize apps/api with FastAPI scaffold", "status": "done"},
+          {"id": 4, "title": "Initialize apps/local-agent with Python scaffold", "status": "done"},
+          {"id": 5, "title": "Create packages/shared for Pydantic models", "status": "done"}
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Cloud Database Schema Design (PostgreSQL)",
+        "description": "Design and implement PostgreSQL schema for practices, users, schedules, and audit logs",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [1],
+        "details": "Create Alembic migrations. Design tables: practices (with settings JSONB), users (with role enum), schedules (with status enum), appointments, risk_flags, opportunities, huddles, audit_logs (immutable), refresh_tokens. Add indexes per BACKEND_STRUCTURE.md.",
+        "testStrategy": "Run migrations against test database. Verify all tables created with correct constraints.",
+        "subtasks": [
+          {"id": 1, "title": "Create Alembic configuration in apps/api", "status": "pending"},
+          {"id": 2, "title": "Create initial migration with core tables", "status": "pending"},
+          {"id": 3, "title": "Create migration with auxiliary tables", "status": "pending"},
+          {"id": 4, "title": "Add indexes and constraints", "status": "pending"}
+        ]
+      },
+      {
+        "id": 3,
+        "title": "FastAPI Authentication System with JWT and RBAC",
+        "description": "Implement secure JWT-based authentication with role-based access control for Provider, Hygienist, Admin, Manager roles",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [2],
+        "details": "Create security.py with bcrypt password hashing. Create jwt.py with token generation/validation (15-min access, 7-day refresh). Implement login/logout/refresh endpoints. Create RBAC decorators. Add MFA for Manager role. Implement audit logging middleware.",
+        "testStrategy": "E2E tests for signup, login, token refresh. Test role-based route protection. Verify audit logs created.",
+        "subtasks": [
+          {"id": 1, "title": "Create password hashing with bcrypt", "status": "pending"},
+          {"id": 2, "title": "Implement JWT token generation/validation", "status": "pending"},
+          {"id": 3, "title": "Create login/logout/refresh endpoints", "status": "pending"},
+          {"id": 4, "title": "Implement RBAC decorator", "status": "pending"},
+          {"id": 5, "title": "Add MFA for Manager role", "status": "pending"},
+          {"id": 6, "title": "Create audit logging middleware", "status": "pending"}
+        ]
+      },
+      {
+        "id": 4,
+        "title": "FastAPI Schedule Ingestion Endpoint",
+        "description": "Create endpoint to receive sanitized schedule data from local agent",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [2, 3],
+        "details": "Create POST /api/v1/schedule/ingest endpoint. Define Pydantic schema for SchedulePayload. Add request validation and rate limiting. Trigger async huddle generation after ingestion. Store schedule in database.",
+        "testStrategy": "Unit tests for schema validation. Integration tests for full ingestion flow. Load test for rate limiting.",
+        "subtasks": [
+          {"id": 1, "title": "Create Pydantic schema for schedule payload", "status": "pending"},
+          {"id": 2, "title": "Implement ingestion endpoint", "status": "pending"},
+          {"id": 3, "title": "Add rate limiting and validation", "status": "pending"},
+          {"id": 4, "title": "Trigger async huddle generation", "status": "pending"}
+        ]
+      },
+      {
+        "id": 5,
+        "title": "LangGraph HuddleSupervisor Implementation",
+        "description": "Create the master orchestration agent that coordinates sub-agents for morning huddle generation",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [4],
+        "details": "Set up LangGraph with Azure OpenAI. Create HuddleSupervisor StateGraph. Define state schema for agent workflow. Implement node definitions for each sub-agent. Create edge/routing logic between agents. Add error handling and state persistence.",
+        "testStrategy": "Unit tests for state transitions. Integration tests with mock LLM. End-to-end huddle generation test.",
+        "subtasks": [
+          {"id": 1, "title": "Configure LangGraph with Azure OpenAI", "status": "pending"},
+          {"id": 2, "title": "Create StateGraph and state schema", "status": "pending"},
+          {"id": 3, "title": "Define agent nodes and routing", "status": "pending"},
+          {"id": 4, "title": "Add error handling and retries", "status": "pending"},
+          {"id": 5, "title": "Implement state persistence", "status": "pending"},
+          {"id": 6, "title": "Add telemetry integration", "status": "pending"}
+        ]
+      },
+      {
+        "id": 6,
+        "title": "IngestionAgent Implementation",
+        "description": "Create agent that normalizes raw schedule data from local agent into structured format",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [5],
+        "details": "Create ingestion.py agent. Implement data normalization from raw JSON/CSV. Add OCR text cleanup logic. Handle messy input formats. Output clean ScheduleSchema list.",
+        "testStrategy": "Unit tests with sample messy data. Test OCR cleanup with real-world examples.",
+        "subtasks": [
+          {"id": 1, "title": "Create agent class structure", "status": "pending"},
+          {"id": 2, "title": "Implement OCR text cleanup", "status": "pending"},
+          {"id": 3, "title": "Add data normalization logic", "status": "pending"},
+          {"id": 4, "title": "Validate procedure codes", "status": "pending"},
+          {"id": 5, "title": "Add error handling", "status": "pending"}
+        ]
+      },
+      {
+        "id": 7,
+        "title": "RiskScannerAgent Implementation",
+        "description": "Create agent that identifies medical, financial, and scheduling risks for patients",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [5],
+        "details": "Create risk_scanner.py agent. Implement rules engine architecture. Add medical risk rules (blood thinners, allergies). Add financial risk rules (outstanding balances). Add scheduling risk rules (no-show patterns). Support practice customization.",
+        "testStrategy": "Unit tests for each rule category. Test severity level assignment. Verify customization works.",
+        "subtasks": [
+          {"id": 1, "title": "Create rules engine architecture", "status": "pending"},
+          {"id": 2, "title": "Implement medical risk rules", "status": "pending"},
+          {"id": 3, "title": "Implement financial risk rules", "status": "pending"},
+          {"id": 4, "title": "Implement scheduling risk rules", "status": "pending"},
+          {"id": 5, "title": "Add practice customization", "status": "pending"}
+        ]
+      },
+      {
+        "id": 8,
+        "title": "RevenueAgent Implementation",
+        "description": "Create agent that identifies unscheduled treatment opportunities and revenue potential",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [5],
+        "details": "Create revenue.py agent. Implement unscheduled treatment detection from patient history. Calculate estimated revenue values. Generate talking points for each opportunity. Prioritize by value and likelihood.",
+        "testStrategy": "Unit tests for opportunity detection. Verify revenue calculations. Test prioritization logic.",
+        "subtasks": [
+          {"id": 1, "title": "Implement opportunity identification logic", "status": "pending"},
+          {"id": 2, "title": "Add revenue calculation", "status": "pending"},
+          {"id": 3, "title": "Create prioritization algorithm", "status": "pending"},
+          {"id": 4, "title": "Generate talking points", "status": "pending"}
+        ]
+      },
+      {
+        "id": 9,
+        "title": "WriterAgent Implementation",
+        "description": "Create agent that generates role-specific morning huddle summaries",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [6, 7, 8],
+        "details": "Create writer.py agent. Create prompt templates for Clinical, Hygiene, and Admin summaries. Implement summary generation using Azure OpenAI. Ensure tone and format consistency across roles.",
+        "testStrategy": "Test each summary type with sample data. Verify tone consistency. Check summary length constraints.",
+        "subtasks": [
+          {"id": 1, "title": "Create prompt templates for each role", "status": "pending"},
+          {"id": 2, "title": "Implement clinical summary generation", "status": "pending"},
+          {"id": 3, "title": "Implement hygiene summary generation", "status": "pending"},
+          {"id": 4, "title": "Implement admin summary generation", "status": "pending"}
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Morning Huddle API Endpoints",
+        "description": "Create REST endpoints for retrieving huddle data by date and role",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [9],
+        "details": "Create GET /api/v1/huddle/{date} endpoint. Create GET /api/v1/huddle/{date}/summary/{role} endpoint. Implement role-specific filtering. Add caching for generated huddles. Integrate audit logging.",
+        "testStrategy": "Unit tests for each endpoint. Test role-based access. Verify caching works correctly.",
+        "subtasks": [
+          {"id": 1, "title": "Create huddle retrieval endpoints", "status": "pending"},
+          {"id": 2, "title": "Implement role-specific filtering", "status": "pending"},
+          {"id": 3, "title": "Add caching layer", "status": "pending"},
+          {"id": 4, "title": "Integrate audit logging", "status": "pending"}
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Local Agent - PMS Data Extraction",
+        "description": "Implement data extractors for Dentrix, CSV files, and screen scraping fallback",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [1],
+        "details": "Create extractor base interface. Implement CSV file parser. Implement Dentrix ODBC connection. Create Playwright screen scraping fallback. Add SQLite caching for last 7 days. Create extractor factory based on config.",
+        "testStrategy": "Unit tests with sample CSV data. Integration tests with mock Dentrix. Test screen scraping with sample screens.",
+        "subtasks": [
+          {"id": 1, "title": "Create extractor base interface", "status": "pending"},
+          {"id": 2, "title": "Implement CSV extractor", "status": "pending"},
+          {"id": 3, "title": "Implement Dentrix ODBC extractor", "status": "pending"},
+          {"id": 4, "title": "Implement Playwright screen scraper", "status": "pending"},
+          {"id": 5, "title": "Add SQLite caching", "status": "pending"},
+          {"id": 6, "title": "Create extractor factory", "status": "pending"}
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Local Agent - PHI Sanitization Pipeline",
+        "description": "Implement HIPAA-compliant sanitization to hash/tokenize all PII before cloud transmission",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [11],
+        "details": "Create SHA-256 hasher with practice-specific salt. Implement patient name tokenization. Create sanitization pipeline that chains sanitizers. Add validation to ensure no PHI leaks. Create audit logging for sanitization.",
+        "testStrategy": "Unit tests for each sanitizer. Verify no PII in output. Test token mapping correctness.",
+        "subtasks": [
+          {"id": 1, "title": "Create SHA-256 hasher with practice salt", "status": "pending"},
+          {"id": 2, "title": "Implement name tokenization", "status": "pending"},
+          {"id": 3, "title": "Create sanitization pipeline", "status": "pending"},
+          {"id": 4, "title": "Add validation checks", "status": "pending"},
+          {"id": 5, "title": "Implement audit logging", "status": "pending"}
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Local Agent - Cloud API Communication",
+        "description": "Implement secure upload to cloud API with retry logic and offline queue",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [12],
+        "details": "Create httpx async client. Add tenacity retry logic. Implement request signing for API key auth. Add TLS 1.3 verification. Create upload queue with SQLite for failed uploads.",
+        "testStrategy": "Integration tests with mock API. Test retry behavior. Verify queue persistence.",
+        "subtasks": [
+          {"id": 1, "title": "Create HTTP client with retry logic", "status": "pending"},
+          {"id": 2, "title": "Implement TLS and authentication", "status": "pending"},
+          {"id": 3, "title": "Add payload compression", "status": "pending"},
+          {"id": 4, "title": "Create failed upload queue", "status": "pending"}
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Local Agent - Windows Service and Scheduling",
+        "description": "Package local agent as Windows service with 6 AM scheduled trigger",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [13],
+        "details": "Create schedule library trigger for 6 AM daily. Create Windows service wrapper. Add system tray UI for status. Configure PyInstaller for .exe compilation. Create installer script.",
+        "testStrategy": "Test scheduled trigger. Verify service starts on boot. Test installer on clean Windows.",
+        "subtasks": [
+          {"id": 1, "title": "Implement scheduler with 6 AM trigger", "status": "pending"},
+          {"id": 2, "title": "Create Windows service wrapper", "status": "pending"},
+          {"id": 3, "title": "Add system tray UI", "status": "pending"},
+          {"id": 4, "title": "Configure PyInstaller", "status": "pending"},
+          {"id": 5, "title": "Create installer script", "status": "pending"}
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Next.js Authentication UI",
+        "description": "Implement login, logout, and protected route components for the dashboard",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [3],
+        "details": "Install Shadcn/UI components. Create login page at app/(auth)/login. Create forgot-password page. Implement JWT storage and refresh logic. Create auth context provider. Add protected route wrapper.",
+        "testStrategy": "E2E tests for login flow. Test token refresh. Verify protected routes redirect.",
+        "subtasks": [
+          {"id": 1, "title": "Create login/register pages", "status": "pending"},
+          {"id": 2, "title": "Implement auth context/hooks", "status": "pending"},
+          {"id": 3, "title": "Create protected route wrapper", "status": "pending"},
+          {"id": 4, "title": "Add MFA UI for managers", "status": "pending"},
+          {"id": 5, "title": "Create password reset flow", "status": "pending"}
+        ]
+      },
+      {
+        "id": 16,
+        "title": "Morning Huddle Dashboard Components",
+        "description": "Create React components for displaying morning huddle data by role",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [10, 15],
+        "details": "Create HuddleCard component for summaries. Create RiskFlagList with severity indicators. Create OpportunityCard with actions. Add loading skeletons. Implement real-time data fetching with SWR.",
+        "testStrategy": "Component unit tests. Visual regression tests. Test loading states.",
+        "subtasks": [
+          {"id": 1, "title": "Create HuddleCard component", "status": "pending"},
+          {"id": 2, "title": "Create RiskFlag/Opportunity cards", "status": "pending"},
+          {"id": 3, "title": "Add ScheduleTimeline component", "status": "pending"},
+          {"id": 4, "title": "Implement loading/empty states", "status": "pending"}
+        ]
+      },
+      {
+        "id": 17,
+        "title": "Role-Specific Dashboard Views",
+        "description": "Create dashboard pages customized for Dentist, Hygienist, Admin, and Manager roles",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [16],
+        "details": "Create dashboard layout with header and sidebar. Implement Dentist dashboard with clinical focus. Create Hygienist dashboard with patient prep focus. Create Admin dashboard with tasks and financials. Create Manager dashboard with metrics.",
+        "testStrategy": "E2E tests for each role view. Verify correct data displayed per role.",
+        "subtasks": [
+          {"id": 1, "title": "Create Dentist/Hygienist dashboards", "status": "pending"},
+          {"id": 2, "title": "Create Admin/Manager dashboards", "status": "pending"},
+          {"id": 3, "title": "Implement role-based routing", "status": "pending"},
+          {"id": 4, "title": "Add personalization features", "status": "pending"}
+        ]
+      },
+      {
+        "id": 18,
+        "title": "Chat Interface for Q&A",
+        "description": "Create streaming chat interface for asking questions about today's schedule",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [17],
+        "details": "Create chat UI components. Implement POST /api/v1/chat/query endpoint. Add streaming response display. Implement context awareness from current huddle. Add suggested follow-up questions.",
+        "testStrategy": "Unit tests for chat components. Test streaming. Verify context awareness.",
+        "subtasks": [
+          {"id": 1, "title": "Create chat UI components", "status": "pending"},
+          {"id": 2, "title": "Implement backend chat endpoint", "status": "pending"},
+          {"id": 3, "title": "Add streaming responses", "status": "pending"},
+          {"id": 4, "title": "Implement context awareness", "status": "pending"},
+          {"id": 5, "title": "Add mobile layout", "status": "pending"}
+        ]
+      },
+      {
+        "id": 19,
+        "title": "HIPAA Compliance Implementation",
+        "description": "Implement all HIPAA-required audit logging, encryption, and access controls",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [3, 12],
+        "details": "Implement immutable audit log table. Verify encryption at rest (AES-256) and in transit (TLS 1.3). Add comprehensive access logging. Create admin audit interface for managers. Prepare compliance documentation.",
+        "testStrategy": "Verify audit logs created for all actions. Penetration test. Verify encryption.",
+        "subtasks": [
+          {"id": 1, "title": "Implement audit log table", "status": "pending"},
+          {"id": 2, "title": "Verify encryption implementation", "status": "pending"},
+          {"id": 3, "title": "Add access logging", "status": "pending"},
+          {"id": 4, "title": "Create admin audit interface", "status": "pending"},
+          {"id": 5, "title": "Prepare compliance documentation", "status": "pending"}
+        ]
+      },
+      {
+        "id": 20,
+        "title": "End-to-End Testing Suite",
+        "description": "Create comprehensive test suite covering local agent to dashboard flow",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [14, 18, 19],
+        "details": "Set up Playwright for frontend E2E tests. Create pytest integration tests for backend. Test full pipeline: local agent → cloud API → huddle generation → dashboard display. Add performance tests targeting < 2 min huddle generation.",
+        "testStrategy": "Run full E2E suite in CI. Performance benchmarks. Security scan.",
+        "subtasks": [
+          {"id": 1, "title": "Set up test infrastructure", "status": "pending"},
+          {"id": 2, "title": "Create frontend E2E tests", "status": "pending"},
+          {"id": 3, "title": "Create backend integration tests", "status": "pending"},
+          {"id": 4, "title": "Add full pipeline tests", "status": "pending"},
+          {"id": 5, "title": "Integrate with CI/CD", "status": "pending"}
+        ]
+      }
+    ]
+  }
+}

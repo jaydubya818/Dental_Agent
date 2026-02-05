@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "shadcn-ui": {
+      "command": "npx",
+      "args": [
+        "@jpisnice/shadcn-ui-mcp-server"
+      ]
+    },
+    "vercel": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@robinson_ai_systems/vercel-mcp"
+      ],
+      "env": {
+        "VERCEL_TOKEN": "V4gLSObp4xcWal9JV7jFFvxn"
+      }
+    },
+    "typescript-lsp": {
+      "command": "typescript-language-server",
+      "args": [
+        "--stdio"
+      ],
+      "env": {
+        "WORKSPACE_ROOT": "/Users/jaywest/SellerFin/seller-financing-platform"
+      }
+    },
+    "prisma-lsp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@prisma/language-server",
+        "--stdio"
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+🔄 AUTO-GENERATED VALIDATION FIX REQUEST
+
+File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/test-payments.md
+Validation Iteration: 1/2
+
+VALIDATION FAILURES:
+[financial-calculation-validator]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 FINANCIAL CALCULATION VALIDATOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/test-payments.md
+
+Issues found:
+
+⚠️  CRITICAL: Floating-point arithmetic detected in financial calculations
+   Use integer cents (e.g., amountInCents) or Decimal.js library
+   Found in:    Line 68:- 🧪 **Unit Tests**: `/payments/` module tests
+💡 INFO: Interest calculation detected - verify compound vs simple interest
+
+🔒 Security Reminder: Financial calculations must be:
+   • Precise (use integers/Decimal, not floats)
+   • Validated (no negative amounts, overflow checks)
+   • Audited (log all state changes)
+   • Tested (unit tests with edge cases)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TASK: Fix the validation issues in /Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/test-payments.md
+
+The validators will automatically re-run after your fix.

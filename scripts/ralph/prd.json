@@ -1,0 +1,23 @@
+{
+  "project": "SellerFi",
+  "branchName": "ralph/test-integration",
+  "description": "Ralph Integration Test - Add a simple utility function",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Add formatCurrency utility function",
+      "description": "As a developer, I need a utility function to format currency values consistently across the app.",
+      "acceptanceCriteria": [
+        "Create lib/utils/currency.ts with formatCurrency function",
+        "Function accepts amount (number) and returns formatted string with $ and commas",
+        "Function handles decimals correctly (always 2 decimal places)",
+        "Add unit tests for the function in lib/utils/currency.test.ts",
+        "All tests pass (npm run test:run)",
+        "Typecheck passes (npm run type-check)"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
+    }
+  ]
+}

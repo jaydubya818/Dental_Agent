@@ -1,0 +1,121 @@
+{
+  "/Users/jaywest/SellerFin/seller-financing-platform/.taskmaster/tasks/tasks.json": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.taskmaster/tasks/tasks.json",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/.taskmaster/tasks/tasks.json (537 lines)\n\nPreview:\n  1: {\n  2:   \"master\": {\n  3:     \"tasks\": [\n  4:       {\n  5:         \"id\": 1,\n  6:         \"title\": \"Project Setup and Configuration\",\n  7:         \"description\": \"Initialize the project repository with Next.js frontend \n  8:         \"details\": \"1. Create a monorepo structure with separate directories for\n  9:         \"testStrategy\": \"1. Verify that both frontend and backend projects compi\n  10:         \"priority\": \"high\",\n  ...\n  533:       \"updated\": \"2026-01-04T04:51:32.545Z\",\n  534:       \"description\": \"Tasks for master context\"\n  535:     }\n  536:   }\n  537: }",
+    "tokens": 17583,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/(main)/dealrooms/[id]/page.tsx": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/(main)/dealrooms/[id]/page.tsx",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/app/(main)/dealrooms/[id]/page.tsx\n\nImports:\n  import { notFound, redirect } from \"next/navigation\"\n  import Link from \"next/link\"\n  import { getDealroom } from \"@/lib/actions/dealroom\"\n  import { getCurrentUser } from \"@/lib/auth\"\n  import { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\"\n  ... and 23 more\n\nExports:\n  export const dynamic = 'force-dynamic'\n  export default async function DealroomPage(\n\nTypes/Interfaces:\n  import\n  import\n  interface DealroomPageProps",
+    "tokens": 6657,
+    "accessCount": 2
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/components/dealrooms/offer-section.tsx": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/components/dealrooms/offer-section.tsx",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 2
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/lib/auth.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/lib/auth.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/lib/stripe.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/lib/stripe.ts",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/lib/stripe.ts\n\nImports:\n  import Stripe from \"stripe\"\n  import { prisma } from \"@/lib/prisma\"\n\nExports:\n  export const stripe = (() =>\n  export const PRICING =\n  export function verifyWebhookSignature(\n",
+    "tokens": 4241,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/prisma/schema.prisma": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/prisma/schema.prisma",
+    "lastModified": 0,
+    "summary": "Prisma Schema: /Users/jaywest/SellerFin/seller-financing-platform/prisma/schema.prisma\n\nModels:\n  model User {\n  model BuyerProfile {\n  model SellerProfile {\n  model Listing {\n  model ListingFinancials {\n  model FinancingTerms {\n  model TermSheet {\n  model AmortizationSchedule {\n  model AmortizationPayment {\n  model Dealroom {\n  model Message {\n  model DealroomFee {\n  model Document {\n  model DocumentTemplate {\n  model BuyerIntentScore {\n  model Activity {\n  model Embedding {\n  model SavedListing {\n  model SavedSearch {\n  model ListingComparison {\n  model Subscription {\n  model PaymentHistory {\n  model VerificationToken {\n  model Notification {\n  model AnalyticsEvent {\n  model BrokerSubscription {\n  model BrokerUsage {\n  model DocPackPurchase {\n  model SuccessFee {\n  model Testimonial {\n  model NotificationPreference {\n  model StripeEvent {\n  model WebhookHealth {\n  model ExperimentAssignment {\n  model BuyerPreferences {\n  model RecommendationScore {\n  model AIValuation {\n  model ServiceProvider {\n  model DueDiligenceChecklist {\n  model TransactionMilestone {\n  model ManagedSaleApplication {\n  model ManagedSaleEvent {\n  model ManagedSaleTask {\n  model ManagedSaleOffer {\n  model ManagedSaleMessage {\n  model KBArticle {\n  model KBEmbedding {\n  model KBConversation {\n  model      String   @default(\"gpt-4\")\n  model KBQAPair {\n  model KBSearchAnalytics {\n  model KBPerformanceMetrics {\n  model KBQualityMetrics {\n  model KBSearchSession {\n  model KBErrorLog {\n  model KBSearchTrends {\n  model KBABTest {\n  model RagDocument {\n  model RagChunk {\n  model RagConversation {\n  model AuditLog {\n  model FormSubmission {\n  model Offer {\n  model EscrowTransaction {\n  model DealAuditLog {\n  model DealEvent {\n  model BuyerQualification {",
+    "tokens": 14807,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/package.json": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/package.json",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/settings.local.json": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/settings.local.json",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/settings.local.json (175 lines)\n\nPreview:\n  1: {\n  2:   \"$schema\": \"https://json.schemastore.org/claude-code-settings.json\",\n  3:   \"permissions\": {\n  4:     \"allow\": [\n  5:       \"WebFetch(domain:docs.anthropic.com)\",\n  6:       \"mcp__ide__getDiagnostics\",\n  7:       \"Bash(yarn install)\",\n  8:       \"Bash(yarn turbo:command:*)\",\n  9:       \"Bash(npx tsc:*)\",\n  10:       \"Bash(npm run lint)\",\n  ...\n  171:         ]\n  172:       }\n  173:     ]\n  174:   }\n  175: }",
+    "tokens": 2197,
+    "accessCount": 3
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/agents/orchestration/supervisor-orchestrator.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/agents/orchestration/supervisor-orchestrator.md",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/agents/orchestration/supervisor-orchestrator.md (507 lines)\n\nPreview:\n  1: ---\n  2: name: supervisor-orchestrator\n  3: description: Master supervisor orchestrator with comprehensive knowledge of all \n  4: tools: Read, Write, Edit, Grep, Glob, Bash, TodoWrite\n  5: model: haiku\n  6: ---\n  7: \n  8: # Supervisor Orchestrator\n  9: \n  10: **Role**: Master supervisor and orchestrator with comprehensive knowledge of all\n  ...\n  503: - **Code Review**: Collaborate with `code-reviewer` for quality assurance\n  504: - **Testing**: Coordinate with `test-automator` for comprehensive testing\n  505: - **Performance**: Work with `performance-engineer` for optimization\n  506: - **Security**: Coordinate with `security-auditor` for security review\n  507: ",
+    "tokens": 5939,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/config.json": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/config.json",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/config.json (45 lines)\n\nPreview:\n  1: {\n  2:   \"project\": {\n  3:     \"name\": \"SellerFi Financial Marketplace Platform\",\n  4:     \"description\": \"108 specialized AI sub-agents + slash commands for Claude Co\n  5:     \"version\": \"1.1.0\"\n  6:   },\n  7:   \"agents\": {\n  8:     \"directory\": \".claude/agents\",\n  9:     \"index_file\": \".claude/agents/index.md\",\n  10:     \"auto_discovery\": true,\n  ...\n  41:     \"quality_gates\": true,\n  42:     \"command_integration\": true\n  43:   }\n  44: }\n  45: ",
+    "tokens": 257,
+    "accessCount": 3
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/tsc-cache/5ead56b1-83a7-4828-beb1-10c396c86849/commands.txt": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/tsc-cache/5ead56b1-83a7-4828-beb1-10c396c86849/commands.txt",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/SLASH_COMMANDS_IMPLEMENTATION.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/SLASH_COMMANDS_IMPLEMENTATION.md",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/config.json": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/config.json",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/COMMAND_REFERENCE.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/COMMAND_REFERENCE.md",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/commit-push-pr.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/commit-push-pr.md",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/quick-commit.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/commands/quick-commit.md",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/agents/index.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/agents/index.md",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  }
+}

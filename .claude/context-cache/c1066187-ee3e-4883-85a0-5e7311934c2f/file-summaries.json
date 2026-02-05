@@ -1,0 +1,121 @@
+{
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/test-results/test-report.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/test-results/test-report.md",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/COMPREHENSIVE_TEST_REPORT.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/COMPREHENSIVE_TEST_REPORT.md",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/COMPREHENSIVE_TEST_REPORT.md (1478 lines)\n\nPreview:\n  1: # 🎉 Magical 10x Claude Code Setup - COMPREHENSIVE TEST REPORT\n  2: \n  3: **Test Date**: December 31, 2025\n  4: **Tester**: Supervisor Orchestrator Agent\n  5: **Platform**: SellerFin (seller-financing-platform)\n  6: **Status**: ✅ **ALL TESTS PASSED**\n  7: \n  8: ---\n  9: \n  10: ## Executive Summary\n  ...\n  1474: \n  1475: ---\n  1476: \n  1477: **🎊 Congratulations on your magical 10x Claude Code setup! 🚀**\n  1478: ",
+    "tokens": 10763,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/test-files/payment-processor-insecure.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/test-files/payment-processor-insecure.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/test-files/interest-calculator-buggy.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/magical-10x-test/test-files/interest-calculator-buggy.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/lib/financial/amortization-calculator.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/lib/financial/amortization-calculator.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/billing/webhook/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/billing/webhook/route.ts",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/app/api/billing/webhook/route.ts\n\nImports:\n  import { NextRequest, NextResponse } from \"next/server\"\n  import { headers } from \"next/headers\"\n  import { prisma } from \"@/lib/prisma\"\n  import { stripe, verifyWebhookSignature, getStripe } from \"@/lib/stripe\"\n  import Stripe from \"stripe\"\n\nExports:\n  export const runtime = \"nodejs\"\n\nTypes/Interfaces:\n  if (event.type === \"checkout.session.completed\")\n  const type = session.metadata?.type\n  if (type === \"listing_upgrade_premium\" && listingId)\n  if (type === \"listing_plan_purchase\" && listingId)\n  if (type === \"elite_buyer_subscription\")\n  ... and 12 more",
+    "tokens": 5718,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/dealrooms/[id]/loi/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/dealrooms/[id]/loi/route.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/components/listing-photo-carousel.tsx": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/components/listing-photo-carousel.tsx",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-everything.sh": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-everything.sh",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-results/auto-fix-report-20260101_185117.md": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-results/auto-fix-report-20260101_185117.md",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/dealrooms/[id]/messages/stream/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/dealrooms/[id]/messages/stream/route.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-results/typescript-errors.log": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-results/typescript-errors.log",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/dealrooms/[id]/qa/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/dealrooms/[id]/qa/route.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/broker/subscribe/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/broker/subscribe/route.ts",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/app/api/broker/subscribe/route.ts\n\nImports:\n  import { NextRequest, NextResponse } from \"next/server\"\n  import { getCurrentUser } from \"@/lib/auth\"\n  import { prisma } from \"@/lib/prisma\"\n  import Stripe from \"stripe\"\n  import { BROKER_PLANS, formatPrice } from \"@/lib/broker-plans\"\n\nExports:\n  export const dynamic = 'force-dynamic'\n",
+    "tokens": 1500,
+    "accessCount": 3
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/auth/signup/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/auth/signup/route.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 1
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/forms/[formId]/save/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/forms/[formId]/save/route.ts",
+    "lastModified": 0,
+    "summary": "",
+    "tokens": 0,
+    "accessCount": 2
+  },
+  "/Users/jaywest/SellerFin/seller-financing-platform/app/api/broker/doc-pack/route.ts": {
+    "path": "/Users/jaywest/SellerFin/seller-financing-platform/app/api/broker/doc-pack/route.ts",
+    "lastModified": 0,
+    "summary": "File: /Users/jaywest/SellerFin/seller-financing-platform/app/api/broker/doc-pack/route.ts\n\nImports:\n  import { NextRequest, NextResponse } from \"next/server\"\n  import { getCurrentUser } from \"@/lib/auth\"\n  import { prisma } from \"@/lib/prisma\"\n  import Stripe from \"stripe\"\n  import { DOC_PACK_PRICING, BROKER_PLANS, formatPrice } from \"@/lib/broker-plans\"\n  ... and 1 more\n\nExports:\n  export const dynamic = 'force-dynamic'\n\nTypes/Interfaces:\n  includeDeedOfTrust: packageType === 'PREMIUM' && property.type === 'real_estate',",
+    "tokens": 2253,
+    "accessCount": 3
+  }
+}

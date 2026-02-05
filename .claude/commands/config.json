@@ -1,0 +1,179 @@
+{
+  "commands": {
+    "namespace": "sellerfi",
+    "version": "1.0.0",
+    "description": "SellerFi Financial Marketplace Slash Commands",
+    "categories": {
+      "financial-workflow": {
+        "name": "Financial Workflow",
+        "description": "Commands for financial validation and analysis",
+        "icon": "💰"
+      },
+      "development-workflow": {
+        "name": "Development Workflow",
+        "description": "Commands for development and deployment workflows",
+        "icon": "🛠️"
+      },
+      "marketplace-operations": {
+        "name": "Marketplace Operations",
+        "description": "Commands for marketplace management and operations",
+        "icon": "🏪"
+      },
+      "output-style": {
+        "name": "Output Style",
+        "description": "Commands that change response style and persona",
+        "icon": "🎭"
+      },
+      "quality-assurance": {
+        "name": "Quality Assurance",
+        "description": "Commands for code quality, testing, and validation",
+        "icon": "🔍"
+      },
+      "learning-guidance": {
+        "name": "Learning & Guidance",
+        "description": "Commands for education and mentoring support",
+        "icon": "🎓"
+      }
+    },
+    "registry": [
+      {
+        "command": "validate-finances",
+        "category": "financial-workflow",
+        "priority": "high",
+        "description": "Validates financial calculations, term sheets, and financing structures",
+        "keywords": ["finance", "validation", "calculations", "terms"]
+      },
+      {
+        "command": "quick-commit",
+        "category": "development-workflow",
+        "priority": "high",
+        "description": "Smart git commit with financial platform context",
+        "keywords": ["git", "commit", "financial", "smart"]
+      },
+      {
+        "command": "validate-listing",
+        "category": "marketplace-operations",
+        "priority": "high",
+        "description": "Comprehensive business listing validation",
+        "keywords": ["listing", "validation", "marketplace", "quality"]
+      },
+      {
+        "command": "test-payments",
+        "category": "development-workflow",
+        "priority": "high",
+        "description": "Payment integration and financial workflow testing",
+        "keywords": ["payments", "testing", "stripe", "integration"]
+      },
+      {
+        "command": "security-scan",
+        "category": "development-workflow",
+        "priority": "high",
+        "description": "Security scanning with fintech focus",
+        "keywords": ["security", "scan", "fintech", "compliance"]
+      },
+      {
+        "command": "financial-analyst",
+        "category": "output-style",
+        "priority": "medium",
+        "description": "Financial analyst output mode with expert analysis",
+        "keywords": ["analyst", "financial", "expert", "analysis"]
+      },
+      {
+        "command": "verify-compliance",
+        "category": "financial-workflow",
+        "priority": "high",
+        "description": "Regulatory compliance verification",
+        "keywords": ["compliance", "regulatory", "legal", "verification"]
+      },
+      {
+        "command": "deal-flow",
+        "category": "marketplace-operations",
+        "priority": "medium",
+        "description": "Deal flow management and analysis",
+        "keywords": ["deals", "flow", "management", "analysis"]
+      },
+      {
+        "command": "audit-trail",
+        "category": "financial-workflow",
+        "priority": "medium",
+        "description": "Generate audit documentation and trails",
+        "keywords": ["audit", "documentation", "compliance", "trail"]
+      },
+      {
+        "command": "term-sheet-check",
+        "category": "financial-workflow",
+        "priority": "high",
+        "description": "Validate seller financing term sheets",
+        "keywords": ["terms", "sheet", "financing", "validation"]
+      },
+      {
+        "command": "commit-push-pr",
+        "category": "development-workflow",
+        "priority": "high",
+        "description": "Automated git workflow from commit to pull request",
+        "keywords": ["git", "commit", "pr", "workflow", "automation"]
+      },
+      {
+        "command": "verify-changes",
+        "category": "quality-assurance",
+        "priority": "high",
+        "description": "Multi-agent verification across financial, security, and compliance domains",
+        "keywords": ["verification", "validation", "multi-agent", "quality"]
+      },
+      {
+        "command": "code-simplifier",
+        "category": "quality-assurance",
+        "priority": "medium",
+        "description": "Post-implementation code cleanup and simplification for financial modules",
+        "keywords": ["simplify", "cleanup", "maintainability", "refactor"]
+      },
+      {
+        "command": "mentor",
+        "category": "learning-guidance",
+        "priority": "medium",
+        "description": "Detailed explanations and guidance for complex financial logic and concepts",
+        "keywords": ["mentor", "guidance", "explanation", "learning", "financial"]
+      },
+      {
+        "command": "rapid",
+        "category": "development-workflow",
+        "priority": "high",
+        "description": "Accelerated development mode for time-sensitive financial features",
+        "keywords": ["rapid", "accelerated", "urgent", "fast-track", "critical"]
+      }
+    ]
+  },
+  "integration": {
+    "hooks": {
+      "pre_command": [
+        "skill-activation-prompt.sh",
+        "context-optimizer.sh"
+      ],
+      "post_command": [
+        "post-tool-use-tracker.sh",
+        "context-summarizer.ts"
+      ]
+    },
+    "validators": [
+      "financial-calculation-validator.sh",
+      "security-validator.sh",
+      "database-safety-validator.sh"
+    ],
+    "permissions": {
+      "financial-calculations": ["Read", "Grep", "Bash"],
+      "database-queries": ["Read", "Bash"],
+      "validation-scripts": ["Bash"],
+      "git-operations": ["Bash"],
+      "file-analysis": ["Read", "Grep"],
+      "external-validation": ["WebFetch"],
+      "test-execution": ["Bash"],
+      "api-testing": ["Bash", "WebFetch"],
+      "stripe-integration": ["Bash", "mcp__vercel__*"],
+      "security-scanning": ["Bash", "Read", "Grep"],
+      "compliance-checking": ["Read", "Bash"],
+      "financial-analysis": ["Read", "WebFetch"],
+      "market-research": ["WebFetch"],
+      "data-analysis": ["Read", "Grep", "Bash"]
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+🔄 AUTO-GENERATED VALIDATION FIX REQUEST
+
+File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-everything.sh
+Validation Iteration: 2/2
+
+VALIDATION FAILURES:
+[security-validator]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 SECURITY VALIDATOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+File: /Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-everything.sh
+
+CRITICAL ISSUES (must fix):
+
+🚨 CRITICAL: Potential SQL injection via template literals!
+   Use parameterized queries or Prisma ORM
+
+📋 Security Checklist:
+   • No secrets in code (use .env)
+   • All inputs validated/sanitized
+   • Authentication on all protected routes
+   • Sensitive data encrypted at rest
+   • Audit logs for sensitive operations
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VALIDATION_FAILED
+
+TASK: Fix the validation issues in /Users/jaywest/SellerFin/seller-financing-platform/.claude/auto-fix-everything.sh
+
+The validators will automatically re-run after your fix.
