@@ -185,8 +185,24 @@ class MorningHuddle(BaseModel):
 | FE-6 | Chat interface for Q&A about today's schedule | Medium |
 | FE-7 | Mobile-responsive design | Medium |
 | FE-8 | Dark mode support | Low |
+| FE-9 | Task inbox with prioritized list per role | High |
+| FE-10 | Real-time notifications and alerts | Medium |
+| FE-11 | Patient check-in/check-out status indicators | Medium |
 
-### 4.4 AI Agent Requirements
+### 4.4 Intelligent Task Routing Requirements
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| TR-1 | Task inbox per role with prioritized queue | High |
+| TR-2 | AI-driven task prioritization based on deadlines/urgency | High |
+| TR-3 | Auto-assignment of tasks to least-busy staff (configurable) | Medium |
+| TR-4 | Task escalation when approaching deadline | Medium |
+| TR-5 | Task types: appointment confirms, insurance verification, recalls | High |
+| TR-6 | Task completion tracking with timestamps | High |
+| TR-7 | Manager view of all outstanding tasks across staff | High |
+| TR-8 | Integration with PMS for data lookup within tasks | Medium |
+
+### 4.5 AI Agent Requirements
 
 | ID | Requirement | Priority |
 |----|-------------|----------|
@@ -196,6 +212,8 @@ class MorningHuddle(BaseModel):
 | AI-4 | RevenueAgent: Unscheduled treatment identification | Medium |
 | AI-5 | WriterAgent: Generate role-specific summaries | High |
 | AI-6 | HuddleSupervisor: Orchestrate agent flow | High |
+| AI-7 | No-show prediction model (ML-based) | Low |
+| AI-8 | Chat assistant with retrieval-augmented generation | Medium |
 
 ---
 
@@ -378,7 +396,80 @@ jerome-dental/
 
 ---
 
-## 10. Appendix
+## 10. Competitive Differentiators
+
+### 10.1 Why Jerome's Dental Agent Wins
+
+| Differentiator | Description | Competitor Gap |
+|----------------|-------------|----------------|
+| **Comprehensive Front-Office Focus** | Blends administrative automation with intelligent insights in one platform | Competitors offer analytics OR clinical AI, not both |
+| **LLM-Powered Chat Interface** | Natural language Q&A dramatically lowers learning curve | Most dental software requires many clicks |
+| **Hybrid Deployment** | Both cloud SaaS and on-prem options for data-sensitive practices | Many AI solutions are cloud-only |
+| **Vendor-Agnostic Integration** | Works with any PMS via API, database, or screen scraping | Competitors require specific systems |
+| **Proactive Task Orchestration** | Actively manages and prioritizes tasks, not just displays data | Dashboards are passive |
+| **HIPAA-First Architecture** | Compliance baked in from day one with full audit trails | Many treat compliance as afterthought |
+
+### 10.2 Competitive Landscape
+
+| Competitor | Focus | Our Advantage |
+|------------|-------|---------------|
+| **Dental Intelligence** | Analytics dashboards, Morning Huddle reports | We add AI automation + task routing + chat |
+| **Overjet** | X-ray analysis, clinical AI | We focus on front-office operations, not diagnostics |
+| **Arini** | AI phone receptionist | We cover full daily operations, not just calls |
+| **Practice by Numbers** | KPI dashboards | We provide actionable automation, not just metrics |
+
+---
+
+## 11. Future Features (Post-MVP)
+
+### 11.1 Phase 2+ Roadmap
+
+| Feature | Description | Target Phase |
+|---------|-------------|--------------|
+| **Automated Patient Outreach** | AI-drafted recall texts/emails for overdue patients | Phase 2 |
+| **No-Show Prediction** | ML model predicts cancellation risk, suggests overbooking | Phase 2 |
+| **Insurance Automation** | Auto-verify eligibility, pre-auth checks | Phase 3 |
+| **Voice Interface** | Hands-free queries ("Hey Jerome, who's next?") | Phase 3 |
+| **Multi-Site Analytics** | Centralized DSO dashboard across locations | Phase 2 |
+| **Patient Portal Chat** | AI chatbot for patient-facing appointment Q&A | Phase 3 |
+| **Treatment Plan Acceptance** | Track and nudge on unscheduled treatment | Phase 2 |
+
+### 11.2 Adjacent Market Expansion
+
+The platform architecture supports expansion to:
+- **Medical Clinics**: Similar front-office coordination needs
+- **Veterinary Offices**: Same scheduling/risk/revenue patterns
+- **Optometry Clinics**: Appointment-heavy, similar workflows
+
+Core platform remains the same; only connectors and terminology change.
+
+---
+
+## 12. Monetization Strategy Overview
+
+### 12.1 Pricing Model
+
+| Tier | Target | Approx. Price | Features |
+|------|--------|---------------|----------|
+| **Basic** | Solo practice | ~$200-300/mo | Morning huddle, basic task list, limited chat |
+| **Professional** | Multi-provider | ~$400-500/mo | Full AI features, task routing, analytics |
+| **Enterprise** | DSO (5+ sites) | Custom quote | Multi-site, on-prem option, dedicated support |
+
+### 12.2 Value Proposition
+
+- **ROI Example**: Capturing 1 extra crown/month (~$1,000+ revenue) pays for the platform
+- **Time Savings**: 1-2 hours/day in morning prep and coordination
+- **Risk Reduction**: Fewer missed allergies, payment issues, no-shows
+
+### 12.3 Go-to-Market Phases
+
+1. **Pilot (Month 1-3)**: 2-3 friendly practices, free/discounted, gather feedback
+2. **Beta (Month 4-6)**: 10-15 practices, test pricing, refine onboarding
+3. **Launch (Month 7+)**: General availability, paid subscriptions, sales outreach
+
+---
+
+## 13. Appendix
 
 ### A. Glossary
 

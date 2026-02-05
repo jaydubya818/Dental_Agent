@@ -163,6 +163,7 @@ This project follows the **Vibe Coding System** with canonical documentation fil
 | [`docs/IMPLEMENTATION_PLAN.md`](./docs/IMPLEMENTATION_PLAN.md) | Step-by-step build sequence (7 phases) |
 | [`docs/DEPLOYMENT_CHECKLIST.md`](./docs/DEPLOYMENT_CHECKLIST.md) | Pre-flight verification, HIPAA compliance, rollback |
 | [`docs/TESTING_STRATEGY.md`](./docs/TESTING_STRATEGY.md) | Unit, integration, E2E testing guidelines |
+| [`docs/PILOT_PLAYBOOK.md`](./docs/PILOT_PLAYBOOK.md) | Step-by-step pilot practice onboarding guide |
 
 > **For AI Agents**: Read `CLAUDE.md` and `progress.txt` at the start of every session.
 

@@ -5,6 +5,57 @@
 
 ---
 
+## MVP Timeline Overview (3 Months)
+
+| Month | Focus | Key Deliverables |
+|-------|-------|------------------|
+| **Month 1** | Foundations & Prototype | End-to-end skeleton working with fake data |
+| **Month 2** | Core Feature Development | Real PMS integration, AI agents functional |
+| **Month 3** | Refinement & Pilot Launch | Production-ready, 1-2 pilot practices live |
+
+### Month 1: Foundations & Prototype (Weeks 1-4)
+
+**Goals:**
+- Set up cloud environment and repository structure
+- Develop proof-of-concept AI summary with sample data
+- Build on-prem agent prototype with Dentrix connection
+- Achieve basic end-to-end data pipeline (hacky is OK)
+
+**Key Milestones:**
+- Week 1: Project setup, cloud infra, dev environments
+- Week 2: AI prompt engineering with sample schedule data
+- Week 3: Local agent connects to test PMS database
+- Week 4: First end-to-end flow: Agent → Cloud → AI Summary
+
+### Month 2: Core Feature Development (Weeks 5-8)
+
+**Goals:**
+- Expand AI capabilities with real data fields
+- Implement risk detection logic and feed to summaries
+- Build chatbot Q&A with supported question types
+- Develop dashboard UI with core components
+
+**Key Milestones:**
+- Week 5: Risk rule engine functional, feeding into summaries
+- Week 6: Chat interface responding to schedule questions
+- Week 7: Dashboard showing huddle, risks, schedule timeline
+- Week 8: Security review, audit logging, preliminary testing
+
+### Month 3: Refinement & Pilot Launch (Weeks 9-12)
+
+**Goals:**
+- Complete remaining MVP features
+- Install and configure at 1-2 pilot practices
+- Iterate based on real user feedback
+- Prepare for beta expansion
+
+**Key Milestones:**
+- Week 9-10: Deploy to first pilot practice, supervised onboarding
+- Week 11: Collect feedback, iterate on AI prompts and UX
+- Week 12: Stabilize, document, prepare for additional practices
+
+---
+
 ## Phase 1: Foundation ✅
 
 ### 1.1 Project Structure
@@ -290,6 +341,64 @@ Reference: [FRONTEND_GUIDELINES.md](./FRONTEND_GUIDELINES.md), [APP_FLOW.md](./A
 - [ ] **7.3.2** Onboard 3 beta practices
 - [ ] **7.3.3** Collect feedback and iterate
 - [ ] **7.3.4** Prepare for general availability
+
+---
+
+## Phase 8: Pilot Practice Onboarding
+
+### 8.1 Pre-Onboarding (1 Week Before)
+
+- [ ] **8.1.1** Schedule kickoff call with practice manager
+- [ ] **8.1.2** Collect practice details (PMS type, # providers, # staff)
+- [ ] **8.1.3** Verify practice IT requirements (Windows version, network access)
+- [ ] **8.1.4** Send data access agreement and BAA for signature
+- [ ] **8.1.5** Prepare practice-specific configuration
+
+### 8.2 Installation Day (2-4 Hours)
+
+- [ ] **8.2.1** Install local agent on practice server/workstation
+- [ ] **8.2.2** Configure PMS connection (ODBC/API credentials)
+- [ ] **8.2.3** Run initial data extraction test
+- [ ] **8.2.4** Verify PHI sanitization in logs
+- [ ] **8.2.5** Create user accounts for all staff
+- [ ] **8.2.6** Configure practice-specific risk rules and thresholds
+
+### 8.3 Training Session (1-2 Hours)
+
+- [ ] **8.3.1** Demo morning huddle summary (show real data)
+- [ ] **8.3.2** Walk through dashboard for each role
+- [ ] **8.3.3** Practice chat Q&A with sample questions
+- [ ] **8.3.4** Explain risk flags and how to acknowledge
+- [ ] **8.3.5** Set expectations (AI is assistant, not decision-maker)
+- [ ] **8.3.6** Provide quick reference guide (PDF)
+
+### 8.4 First Week Support
+
+- [ ] **8.4.1** Monitor agent connectivity daily
+- [ ] **8.4.2** Review generated summaries for accuracy
+- [ ] **8.4.3** Schedule Day 2 check-in call (15 min)
+- [ ] **8.4.4** Schedule Day 5 feedback call (30 min)
+- [ ] **8.4.5** Address any data mapping issues promptly
+- [ ] **8.4.6** Document feedback for product iteration
+
+### 8.5 Ongoing Pilot Support
+
+- [ ] **8.5.1** Weekly check-in calls for first month
+- [ ] **8.5.2** Track usage metrics (logins, chat queries, tasks completed)
+- [ ] **8.5.3** Collect quantitative data (time saved, opportunities surfaced)
+- [ ] **8.5.4** Prepare case study with practice permission
+- [ ] **8.5.5** Identify power users for testimonials
+
+### 8.6 Success Criteria for Pilot
+
+| Metric | Target |
+|--------|--------|
+| Staff using dashboard daily | > 80% |
+| Morning huddle reviewed | > 90% of days |
+| Time saved on morning prep | > 30 min/day |
+| Risk flags acknowledged | > 95% |
+| User satisfaction score | > 4.0/5.0 |
+| Zero PHI in cloud logs | 100% |
 
 ---
 
